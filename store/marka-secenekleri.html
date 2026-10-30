@@ -1,0 +1,290 @@
+<title>Yerin Altı Marka Seçenekleri</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800;900&display=swap">
+<style>
+/* Layout: one review column. Icon cards grid, live home-screen and store previews of the current pick,
+   ranked name list, sticky "your pick" bar. Single dark theme in the game's anthracite + orange palette. */
+:root{
+  --bg:#14161b;
+  --surface:#1d2027;
+  --surface-2:#262a33;
+  --line:#30353f;
+  --text:#f3f4f7;
+  --muted:#9aa1ad;
+  --accent:#ff8a2b;
+  --gold:#ffcb3d;
+  --good:#5fd38d;
+  --display:"Fredoka","Trebuchet MS","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:700;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 110px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:900}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.05;margin:.3em 0 .35em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:1.45rem;margin:0;text-wrap:balance}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+.lead b{color:var(--text)}
+section{margin-top:44px;display:flex;flex-direction:column;gap:14px}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sechead p{margin:0;color:var(--muted);font-size:.86rem}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* icon cards */
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:start;text-align:left;background:var(--surface);border-radius:22px;padding:14px;box-shadow:inset 0 0 0 2px transparent;transition:box-shadow .15s,transform .15s}
+.card:hover{transform:translateY(-2px)}
+.card[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--accent)}
+.ico{display:block;aspect-ratio:1;width:100%;max-width:100%;border-radius:22.4%;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.ico svg{display:block;width:100%;height:100%}
+.ico.round{border-radius:50%}
+.card .meta{min-width:0;display:flex;flex-direction:column;gap:6px}
+.card .top{display:flex;align-items:center;gap:8px}
+.letter{font-family:var(--display);font-size:.9rem;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);color:var(--gold)}
+.card[aria-pressed="true"] .letter{background:var(--accent);color:#fff}
+.card .h3{font-family:var(--display);font-weight:600;font-size:1.12rem}
+.card .p{display:block;color:var(--muted);font-size:.82rem;line-height:1.4}
+.sizes{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px;padding-top:12px;border-top:1px solid var(--line)}
+.sizes .fig{display:flex;flex-direction:column;align-items:center;gap:3px}
+.sizes .cap{font-size:.62rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:420px){.card{grid-template-columns:104px minmax(0,1fr);gap:12px}}
+
+/* previews */
+.previews{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.phone{border-radius:28px;padding:22px 18px 26px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px 10px;min-height:250px;align-content:start}
+.phone.light{background:linear-gradient(160deg,#cfe4f8,#f6d6c2)}
+.phone.dark{background:linear-gradient(160deg,#1a2033,#3b2a4c)}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.app .ico{width:58px;box-shadow:0 3px 8px rgba(0,0,0,.25)}
+.app span{font-size:.68rem;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:-apple-system,"SF Pro Text",var(--body);font-weight:600}
+.phone.light .app span{color:#1d2433}
+.phone.dark .app span{color:#fff}
+.app.sel .ico{outline:3px solid var(--accent);outline-offset:3px}
+.ghost-ico{width:58px;aspect-ratio:1;border-radius:22.4%;background:rgba(255,255,255,.35)}
+.phone.dark .ghost-ico{background:rgba(255,255,255,.12)}
+.store{background:#fff;color:#1d2433;border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.listing{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:center}
+.listing .ico{width:72px;box-shadow:none;border:1px solid #e3e6ec}
+.listing.gp .ico{border-radius:20%}
+.listing b{display:block;font-family:-apple-system,"SF Pro Display",var(--body);font-weight:700;font-size:1rem;line-height:1.2;overflow-wrap:anywhere}
+.listing small{display:block;color:#6b7280;font-size:.78rem;line-height:1.3}
+.get{background:#eef1f6;color:#0a63ff;border-radius:999px;padding:5px 16px;font-weight:800;font-size:.85rem}
+.listing.gp .get{background:#01875f;color:#fff;border-radius:8px}
+.store h4{margin:0;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#6b7280}
+.store hr{border:0;border-top:1px solid #e3e6ec;margin:0}
+.limits{font-size:.74rem;color:#6b7280;margin:0}
+
+/* names */
+.names{display:flex;flex-direction:column;gap:8px}
+.name{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:14px;align-items:start;text-align:left;background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:inset 0 0 0 2px transparent}
+.name[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--accent)}
+.rank{font-family:var(--display);font-size:1.1rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.name .nm{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.1}
+.name .st{font-size:.8rem;color:var(--gold);margin-top:2px}
+.name .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:4px 18px;margin-top:8px;font-size:.8rem;color:var(--muted)}
+.why .plus::before{content:"+ ";color:var(--good);font-weight:900}
+.why .minus::before{content:"– ";color:#ff8a6a;font-weight:900}
+.pick{font-size:.66rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:#fff;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.note{font-size:.8rem;color:var(--muted);max-width:70ch;margin:0}
+
+/* sticky pick bar */
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(20,22,27,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);z-index:5;
+  padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-top:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar .in{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.bar .ico{width:44px;flex:none}
+.bar .txt{min-width:0;flex:1}
+.bar .txt b{display:block;font-family:var(--display);font-size:1.05rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .txt small{color:var(--muted);font-size:.74rem}
+.copy{background:var(--accent);color:#fff;border-radius:12px;padding:9px 14px;font-weight:900;box-shadow:0 3px 0 #c25a12;white-space:nowrap}
+.copy:active{transform:translateY(2px);box-shadow:0 1px 0 #c25a12}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Mağaza hazırlığı · iOS ve Android</div>
+    <h1>Simge ve isim seçenekleri</h1>
+    <p class="lead">Altı simge ve on isim önerisi. Bir simgeye ve bir isme dokun; aşağıda telefon ekranında ve mağaza listesinde birlikte nasıl durduklarını gör. Karar verince alttaki <b>Seçimi kopyala</b> ile bana yapıştırman yeterli.</p>
+  </header>
+
+  <section aria-labelledby="h-icons">
+    <div class="sechead"><h2 id="h-icons">Simgeler</h2><p>Mağaza boyutu 1024 × 1024, köşeleri sistem keser</p></div>
+    <div class="icons" id="icons"></div>
+  </section>
+
+  <section aria-labelledby="h-prev">
+    <div class="sechead"><h2 id="h-prev">Seçimin telefonda</h2><p>Simgeyi diğer uygulamaların arasında küçük boyutta görmek en iyi testtir</p></div>
+    <div class="previews">
+      <div class="phone light" id="phoneLight"></div>
+      <div class="phone dark" id="phoneDark"></div>
+      <div class="store" id="store"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-names">
+    <div class="sechead"><h2 id="h-names">İsimler</h2><p>Önerdiğim sıraya göre; mağaza başlığı en fazla 30 karakter</p></div>
+    <div class="names" id="names"></div>
+    <p class="note">Mağazalarda ve marka tescilinde (TÜRKPATENT) bu isimlerin boşta olup olmadığını kontrol etmedim. Seçtiğin ismi App Store, Google Play ve TÜRKPATENT’te aratman gerekiyor.</p>
+  </section>
+</div>
+
+<div class="bar"><div class="in">
+  <span class="ico" id="barIco"></span>
+  <div class="txt"><b id="barName">—</b><small id="barSub">Simge ve isim seç</small></div>
+  <button class="copy" id="copyBtn">Seçimi kopyala</button>
+</div></div>
+
+<script>
+(()=>{
+'use strict';
+const INK='#2a1a10';
+let uid=0;
+const star=(x,y,r,c,o)=>`<path d="M${x} ${y-r}L${x+r*.24} ${y-r*.24}L${x+r} ${y}L${x+r*.24} ${y+r*.24}L${x} ${y+r}L${x-r*.24} ${y+r*.24}L${x-r} ${y}L${x-r*.24} ${y-r*.24}Z" fill="${c}" opacity="${o||1}"/>`;
+const coin=(x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#ffcb3d" stroke="${INK}" stroke-width="${r*.3}"/><circle cx="${x}" cy="${y}" r="${r*.55}" fill="none" stroke="#e09a12" stroke-width="${r*.16}"/><circle cx="${x-r*.35}" cy="${y-r*.35}" r="${r*.2}" fill="#fff4c2"/>`;
+function prism(cx,by,w,h,rot,a,b){
+  const l=cx-w/2,r=cx+w/2,sh=by-h+w*.55,t=by-h;
+  return `<g transform="rotate(${rot} ${cx} ${by})"><path d="M${l} ${by}L${r} ${by}L${r} ${sh}L${cx} ${t}L${l} ${sh}Z" fill="${b}" stroke="${INK}" stroke-width="22" stroke-linejoin="round"/>
+    <path d="M${l} ${by}L${cx} ${by}L${cx} ${t}L${l} ${sh}Z" fill="${a}"/><path d="M${l+w*.14} ${sh+20}L${l+w*.3} ${sh-10}L${l+w*.3} ${by-40}L${l+w*.14} ${by-30}Z" fill="#fff" opacity=".45"/>
+    <path d="M${l} ${by}L${r} ${by}L${r} ${sh}L${cx} ${t}L${l} ${sh}Z" fill="none" stroke="${INK}" stroke-width="22" stroke-linejoin="round"/></g>`;
+}
+const ICONS=[
+ {id:'A',name:'Madenci',desc:'Oyunun yüzü: kasklı, güler yüzlü madenci. Karakterle tanınan casual oyunların dili; kalabalık ekranda en çok dikkat çeken seçenek.',
+  svg:u=>`<defs><radialGradient id="a1${u}" cx="50%" cy="38%" r="78%"><stop offset="0" stop-color="#ffc45c"/><stop offset="1" stop-color="#ff6a1a"/></radialGradient>
+  <linearGradient id="a2${u}" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fff6c8" stop-opacity=".9"/><stop offset="1" stop-color="#fff6c8" stop-opacity="0"/></linearGradient></defs>
+  <rect width="1024" height="1024" fill="url(#a1${u})"/><path d="M548 330L1024 0V300Z" fill="url(#a2${u})" opacity=".55"/>
+  <path d="M200 1024C220 850 350 790 512 790S804 850 824 1024Z" fill="#2a5cab" stroke="${INK}" stroke-width="26"/>
+  <circle cx="512" cy="600" r="262" fill="#f6c7a0" stroke="${INK}" stroke-width="26"/>
+  <path d="M232 520A280 280 0 0 1 792 520Z" fill="#ffd23f" stroke="${INK}" stroke-width="26" stroke-linejoin="round"/>
+  <path d="M310 462Q512 380 714 462" fill="none" stroke="#fff3b0" stroke-width="22" stroke-linecap="round" opacity=".7"/>
+  <rect x="176" y="496" width="672" height="76" rx="38" fill="#ffd23f" stroke="${INK}" stroke-width="26"/>
+  <circle cx="512" cy="372" r="74" fill="#fff6c8" stroke="${INK}" stroke-width="24"/><circle cx="488" cy="350" r="22" fill="#fff"/>
+  <ellipse cx="418" cy="668" rx="36" ry="48" fill="${INK}"/><circle cx="430" cy="650" r="13" fill="#fff"/>
+  <ellipse cx="606" cy="668" rx="36" ry="48" fill="${INK}"/><circle cx="618" cy="650" r="13" fill="#fff"/>
+  <ellipse cx="340" cy="742" rx="46" ry="27" fill="#ff6f6f" opacity=".5"/><ellipse cx="684" cy="742" rx="46" ry="27" fill="#ff6f6f" opacity=".5"/>
+  <path d="M454 752Q512 812 570 752" fill="none" stroke="${INK}" stroke-width="24" stroke-linecap="round"/>`},
+ {id:'B',name:'Kazma ve altın',desc:'Koyu zeminde parlayan altın külçe ve kazma. Türün ne olduğunu ilk bakışta söyler; koyu arayüzle aynı aileden.',
+  svg:u=>`<defs><radialGradient id="b1${u}" cx="50%" cy="62%" r="70%"><stop offset="0" stop-color="#ff8a2b" stop-opacity=".8"/><stop offset=".55" stop-color="#4a2a14" stop-opacity=".55"/><stop offset="1" stop-color="#14161b" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1024" height="1024" fill="#1a1c23"/><rect width="1024" height="1024" fill="url(#b1${u})"/>
+  <g transform="rotate(-38 512 512)"><rect x="486" y="170" width="52" height="640" rx="26" fill="#b47538" stroke="${INK}" stroke-width="24"/>
+  <path d="M236 250Q512 70 788 250Q512 168 236 250Z" fill="#dfe6ee" stroke="${INK}" stroke-width="24" stroke-linejoin="round"/>
+  <rect x="470" y="196" width="84" height="74" rx="18" fill="#8a929c" stroke="${INK}" stroke-width="22"/></g>
+  <path d="M282 712L372 560L530 520L680 566L760 680L716 808L540 856L352 822Z" fill="#ffcb3d"/>
+  <path d="M372 560L530 520L560 650L420 690Z" fill="#ffe98a"/><path d="M560 650L760 680L716 808L540 856Z" fill="#e8a417"/><path d="M282 712L420 690L540 856L352 822Z" fill="#f2b62a"/>
+  <path d="M282 712L372 560L530 520L680 566L760 680L716 808L540 856L352 822Z" fill="none" stroke="${INK}" stroke-width="26" stroke-linejoin="round"/>
+  ${star(800,330,70,'#fff6c8')}${star(250,470,46,'#ffe98a')}${star(700,880,40,'#ffcb3d',.8)}`},
+ {id:'C',name:'Katmanlar',desc:'Yüzeyden aşağı inen renkli katmanlar ve en dipte parlayan kristal. “Derine in” fikrini anlatır; detayı en fazla olan seçenek.',
+  svg:u=>`<defs><linearGradient id="c1${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fb0f0"/><stop offset="1" stop-color="#bfe6ff"/></linearGradient>
+  <linearGradient id="c2${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c8" stop-opacity=".8"/><stop offset="1" stop-color="#fff6c8" stop-opacity=".08"/></linearGradient>
+  <radialGradient id="c3${u}" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e6d4ff" stop-opacity=".95"/><stop offset="1" stop-color="#a979ff" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1024" height="260" fill="url(#c1${u})"/>
+  <path d="M0 214Q256 194 512 218T1024 210V1024H0Z" fill="#c07a42"/><path d="M0 404Q256 374 512 404T1024 396V1024H0Z" fill="#94582c"/>
+  <path d="M0 574Q256 549 512 576T1024 564V1024H0Z" fill="#7d7a86"/><path d="M0 724Q256 704 512 728T1024 716V1024H0Z" fill="#a35c4b"/>
+  <path d="M0 858Q256 836 512 860T1024 848V1024H0Z" fill="#4a2f7a"/>
+  <path d="M0 196Q256 176 512 200T1024 192V238Q768 252 512 234T0 242Z" fill="#5cbf4a"/>
+  <g fill="#000" opacity=".16"><ellipse cx="150" cy="320" rx="44" ry="26"/><ellipse cx="860" cy="300" rx="36" ry="22"/><ellipse cx="200" cy="480" rx="50" ry="28"/><ellipse cx="840" cy="500" rx="40" ry="24"/><ellipse cx="160" cy="650" rx="46" ry="26"/><ellipse cx="880" cy="640" rx="44" ry="26"/><ellipse cx="190" cy="790" rx="40" ry="22"/><ellipse cx="840" cy="790" rx="46" ry="26"/></g>
+  <rect x="436" y="226" width="152" height="660" fill="#1d1410" opacity=".55"/>
+  <path d="M494 250L530 250L650 900L374 900Z" fill="url(#c2${u})"/>
+  <circle cx="512" cy="920" r="190" fill="url(#c3${u})"/>
+  <path d="M436 860L588 860L626 900L512 1010L398 900Z" fill="#b48cff" stroke="${INK}" stroke-width="20" stroke-linejoin="round"/><path d="M436 860L512 860L474 900Z" fill="#efe4ff"/><path d="M398 900L626 900" stroke="${INK}" stroke-width="12"/>
+  <path d="M392 214A120 120 0 0 1 632 214Z" fill="#ffd23f" stroke="${INK}" stroke-width="22" stroke-linejoin="round"/>
+  <rect x="362" y="198" width="300" height="40" rx="20" fill="#ffd23f" stroke="${INK}" stroke-width="22"/><circle cx="512" cy="150" r="34" fill="#fff6c8" stroke="${INK}" stroke-width="18"/>`},
+ {id:'D',name:'Sevimli blok',desc:'Kasklı, gülen bir toprak bloğu: oyuna özgü bir maskot. Akılda kalır ve tanınır; karakter ve kazı fikrini aynı anda taşır.',
+  svg:u=>`<defs><linearGradient id="d1${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2f78"/><stop offset="1" stop-color="#17143a"/></linearGradient>
+  <radialGradient id="d2${u}" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#ff8a2b" stop-opacity=".5"/><stop offset="1" stop-color="#ff8a2b" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1024" height="1024" fill="url(#d1${u})"/><circle cx="512" cy="620" r="470" fill="url(#d2${u})"/>
+  ${star(140,180,30,'#fff',.8)}${star(880,240,24,'#fff',.7)}${star(860,860,30,'#ffcb3d',.8)}${star(150,880,22,'#fff',.6)}
+  <rect x="202" y="372" width="620" height="560" rx="120" fill="#94582c" stroke="${INK}" stroke-width="28"/>
+  <rect x="216" y="386" width="592" height="492" rx="106" fill="#c07a42"/>
+  <path d="M290 430Q512 404 734 430" stroke="#e0a56c" stroke-width="34" stroke-linecap="round" fill="none"/>
+  <g fill="#94582c"><circle cx="290" cy="800" r="18"/><circle cx="330" cy="520" r="12"/><circle cx="720" cy="520" r="14"/><circle cx="740" cy="760" r="12"/></g>
+  <g fill="#d9975c"><circle cx="300" cy="620" r="12"/><circle cx="700" cy="640" r="16"/><circle cx="460" cy="840" r="12"/></g>
+  <path d="M640 790L700 770L742 806L722 856L660 860Z" fill="#ffcb3d" stroke="${INK}" stroke-width="16" stroke-linejoin="round"/>
+  <ellipse cx="412" cy="626" rx="44" ry="58" fill="${INK}"/><circle cx="426" cy="604" r="16" fill="#fff"/>
+  <ellipse cx="612" cy="626" rx="44" ry="58" fill="${INK}"/><circle cx="626" cy="604" r="16" fill="#fff"/>
+  <ellipse cx="322" cy="712" rx="44" ry="26" fill="#ff6f6f" opacity=".5"/><ellipse cx="702" cy="712" rx="44" ry="26" fill="#ff6f6f" opacity=".5"/>
+  <path d="M452 716Q512 800 572 716Z" fill="#7a1f1f" stroke="${INK}" stroke-width="20" stroke-linejoin="round"/><path d="M482 748Q512 776 542 748" fill="#ff8a8a"/>
+  <path d="M282 400A230 230 0 0 1 742 400Z" fill="#ffd23f" stroke="${INK}" stroke-width="28" stroke-linejoin="round"/>
+  <path d="M350 350Q512 280 674 350" fill="none" stroke="#fff3b0" stroke-width="20" stroke-linecap="round" opacity=".7"/>
+  <rect x="236" y="380" width="552" height="64" rx="32" fill="#ffd23f" stroke="${INK}" stroke-width="26"/>
+  <circle cx="512" cy="262" r="62" fill="#fff6c8" stroke="${INK}" stroke-width="22"/><circle cx="492" cy="244" r="18" fill="#fff"/>`},
+ {id:'E',name:'Kristal',desc:'Mor zeminde parlayan kristal kümesi. Şık ve “değerli” hissettirir; derin bölgelere ve kristal ekonomisine gönderme yapar.',
+  svg:u=>`<defs><radialGradient id="e1${u}" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#4c2a8a"/><stop offset="1" stop-color="#120c26"/></radialGradient>
+  <radialGradient id="e2${u}" cx="50%" cy="58%" r="45%"><stop offset="0" stop-color="#c9a8ff" stop-opacity=".6"/><stop offset="1" stop-color="#c9a8ff" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1024" height="1024" fill="url(#e1${u})"/><circle cx="512" cy="580" r="440" fill="url(#e2${u})"/>
+  <path d="M0 860Q260 790 512 820T1024 800V1024H0Z" fill="#241840"/>
+  ${prism(330,880,150,380,-22,'#a8e2ff','#4f9be0')}${prism(700,880,160,420,20,'#ffb5e8','#d65fb5')}${prism(512,870,210,600,0,'#d7c2ff','#8a5cf0')}
+  ${star(200,240,44,'#fff')}${star(840,300,34,'#fff',.85)}${star(760,160,22,'#ffcb3d')}`},
+ {id:'F',name:'Darbe',desc:'Kazmanın bloğa indiği an: çatlak, kıvılcım ve fırlayan altınlar. Oyunun en tatmin edici anını gösterir; enerjik ve hareketli.',
+  svg:u=>`<defs><radialGradient id="f1${u}" cx="45%" cy="55%" r="75%"><stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#d9480f"/></radialGradient></defs>
+  <rect width="1024" height="1024" fill="url(#f1${u})"/>
+  <g stroke="#fff3c2" stroke-width="26" stroke-linecap="round" opacity=".35"><path d="M640 480L860 360M640 480L900 560M640 480L760 180M640 480L520 140"/></g>
+  <rect x="236" y="470" width="480" height="440" rx="70" fill="#94582c" stroke="${INK}" stroke-width="26"/>
+  <rect x="250" y="484" width="452" height="372" rx="58" fill="#c07a42"/>
+  <path d="M300 520Q476 500 652 520" stroke="#e0a56c" stroke-width="28" stroke-linecap="round" fill="none"/>
+  <path d="M636 494L584 600L636 660L552 780M584 600L492 628L456 716" fill="none" stroke="${INK}" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  <g transform="translate(455 322) rotate(-40)"><rect x="20" y="-26" width="560" height="52" rx="26" fill="#b47538" stroke="${INK}" stroke-width="22"/>
+  <path d="M40 -240Q-70 0 40 240Q-10 0 40 -240Z" fill="#dfe6ee" stroke="${INK}" stroke-width="22" stroke-linejoin="round"/><rect x="-6" y="-40" width="64" height="80" rx="16" fill="#8a929c" stroke="${INK}" stroke-width="20"/></g>
+  ${star(648,480,120,'#fff6c8')}
+  ${coin(300,360,54)}${coin(196,270,40)}${coin(410,250,46)}${coin(170,470,34)}`},
+];
+function iconHTML(def,cls,w){uid++;return `<span class="ico${cls?' '+cls:''}"${w?` style="width:${w}px"`:''}><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${def.name} simgesi">${def.svg('_'+uid)}</svg></span>`;}
+const NAMES=[
+ {nm:'Kazdıkça',st:'Kazdıkça: Madenci Ekibi',plus:['Kısa, akılda kalır, fiil olduğu için enerjik','Sloganla birleşiyor: “Kazdıkça daha fazlası var”','Benzersiz olduğu için aramada öne çıkması kolay'],minus:['Yabancı oyuncular için ı ve ç harfleri zor']},
+ {nm:'Yerin Altı',st:'Yerin Altı: Kazı Ekibi',plus:['Şu anki adı, oyunun dünyasını doğrudan anlatır','Herkesin bildiği, sıcak bir ifade'],minus:['Yaygın bir söz; kitap, dizi ve başka uygulamalarla aramada karışabilir']},
+ {nm:'Kazı Ekibi',st:'Kazı Ekibi: Yeraltı Macerası',plus:['Oyunun asıl fikri olan ekip büyütmeyi öne çıkarır','Anlaşılır, aileye uygun'],minus:['Biraz genel; tek başına marka gibi durmaz']},
+ {nm:'Derin Kazı',st:'Derin Kazı: Yeraltı Ekibi',plus:['Türü ve hedefi (derine inmek) net söyler'],minus:['Genel bir ifade, marka olarak sahiplenmesi zor']},
+ {nm:'Kaz Bakalım!',st:'Kaz Bakalım! Madenci Oyunu',plus:['Oyuncuya seslenen, esprili ve samimi','Reklam ve video başlıklarında güçlü'],minus:['Ünlem ve boşluk logoda düzenleme ister']},
+ {nm:'Dibe Kadar',st:'Dibe Kadar: Kazı Oyunu',plus:['Hedefi iddialı biçimde anlatır','Kısa ve ritmik'],minus:['“Dip” bazı okurlarda olumsuz çağrışım yapabilir']},
+ {nm:'Madenci Dayı',st:'Madenci Dayı: Kazı Ekibi',plus:['Karakter odaklı, sıcak ve yerli bir marka','Simge A ile çok iyi eşleşir'],minus:['Oyunu tek bir karaktere bağlar, ekip fikri geri planda kalır']},
+ {nm:'Altın Kuyusu',st:'Altın Kuyusu: Madenci Ekibi',plus:['Kazanç hissini öne çıkarır'],minus:['Kumar çağrışımı mağaza incelemesinde ve ebeveynlerde soru işareti yaratabilir']},
+ {nm:'Kazmacı',st:'Kazmacı: Yeraltı Ekibi',plus:['Tek kelime, çok kısa'],minus:['Az kullanılan bir kelime; ilk duyuşta yapay gelebilir']},
+ {nm:'Dig Squad',st:'Dig Squad: Idle Miner',plus:['İleride global yayın için İngilizce alternatif'],minus:['Türkiye pazarında yerli oyun hissini kaybettirir']},
+];
+const SUBTITLE='Kaz, ekibini büyüt, derine in';
+let selIcon='D',selName=0;
+try{const s=JSON.parse(localStorage.getItem('ya-brand-pick')||'null');if(s&&ICONS.some(i=>i.id===s.i)&&NAMES[s.n])({i:selIcon,n:selName}=s);}catch(e){}
+const $=id=>document.getElementById(id);
+
+function renderCards(){
+  $('icons').innerHTML=ICONS.map(d=>`<button class="card" data-icon="${d.id}" aria-pressed="${d.id===selIcon}">
+    ${iconHTML(d)}
+    <span class="meta"><span class="top"><span class="letter">${d.id}</span><span class="h3">${d.name}</span></span><span class="p">${d.desc}</span></span>
+      <span class="sizes">${[[60,''],[40,''],[29,''],[44,'round']].map(([w,c])=>`<span class="fig">${iconHTML(d,c,w)}<span class="cap">${c?'Android':w}</span></span>`).join('')}</span></button>`).join('');
+}
+function renderNames(){
+  $('names').innerHTML=NAMES.map((n,i)=>`<button class="name" data-name="${i}" aria-pressed="${i===selName}">
+    <span class="rank">${i+1}</span>
+    <span style="min-width:0"><span class="nm">${n.nm}</span><span class="st" style="display:block">Mağaza başlığı: ${n.st} · ${n.st.length} karakter</span>
+      <span class="why">${n.plus.map(p=>`<span class="plus">${p}</span>`).join('')}${n.minus.map(p=>`<span class="minus">${p}</span>`).join('')}</span></span>
+    ${i===0?'<span class="pick">Önerim</span>':'<span></span>'}</button>`).join('');
+}
+function renderPreview(){
+  const d=ICONS.find(i=>i.id===selIcon),n=NAMES[selName];
+  // the pick sits among neutral placeholder apps so it is judged at real home-screen size
+  const grid=(theme)=>{let h='';for(let k=0;k<8;k++){if(k===5)h+=`<div class="app sel">${iconHTML(d)}<span>${n.nm}</span></div>`;else h+=`<div class="app"><span class="ghost-ico"></span><span style="opacity:0">.</span></div>`;}return h;};
+  $('phoneLight').innerHTML=grid('light');$('phoneDark').innerHTML=grid('dark');
+  $('phoneLight').setAttribute('aria-label',`${n.nm} açık duvar kâğıdında`);$('phoneDark').setAttribute('aria-label',`${n.nm} koyu duvar kâğıdında`);
+  $('store').innerHTML=`<h4>App Store</h4><div class="listing">${iconHTML(d)}<div><b>${n.st}</b><small>${SUBTITLE}</small></div><span class="get">Al</span></div>
+    <hr><h4>Google Play</h4><div class="listing gp">${iconHTML(d)}<div><b>${n.st}</b><small>Oyun · Simülasyon</small></div><span class="get">Yükle</span></div>
+    <p class="limits">Alt başlık önerisi: “${SUBTITLE}” (${SUBTITLE.length} karakter, iOS sınırı 30).</p>`;
+  $('barIco').innerHTML=`<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">${d.svg('_bar'+(++uid))}</svg>`;
+  $('barIco').style.borderRadius='22.4%';
+  $('barName').textContent=`Simge ${d.id} · ${n.nm}`;$('barSub').textContent=`${d.name} simgesi, mağaza başlığı “${n.st}”`;
+  document.querySelectorAll('.card').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.icon===selIcon)));
+  document.querySelectorAll('.name').forEach(c=>c.setAttribute('aria-pressed',String(+c.dataset.name===selName)));
+  try{localStorage.setItem('ya-brand-pick',JSON.stringify({i:selIcon,n:selName}));}catch(e){}
+}
+$('icons').addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;selIcon=c.dataset.icon;renderPreview();});
+$('names').addEventListener('click',e=>{const c=e.target.closest('.name');if(!c)return;selName=+c.dataset.name;renderPreview();});
+$('copyBtn').addEventListener('click',()=>{
+  const d=ICONS.find(i=>i.id===selIcon),t=`Seçimim: Simge ${d.id} (${d.name}), isim: ${NAMES[selName].nm}`,b=$('copyBtn');
+  const ok=()=>{b.textContent='Kopyalandı';setTimeout(()=>b.textContent='Seçimi kopyala',1600);};
+  try{navigator.clipboard.writeText(t).then(ok,()=>{b.textContent=t;});}catch(e){b.textContent=t;}
+});
+renderCards();renderNames();renderPreview();
+})();
+</script>
