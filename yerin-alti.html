@@ -1328,10 +1328,18 @@ function openSettings(step){
   openModal(`<h2>Ayarlar</h2>
     <div class="setrow"><span>Ses efektleri</span><button class="ghost" data-act="snd">${S.sound?'Açık':'Kapalı'}</button></div>
     <div class="setrow"><span style="color:var(--muted)">Oyun kendini her 5 saniyede bu tarayıcıya kaydeder.</span></div>
+    <!-- TEMP: progress export, remove later -->
+    <div class="setrow"><span>İlerleme kodu</span><button class="ghost" data-act="exp">Kopyala</button></div>
+    <textarea id="expBox" readonly hidden style="width:100%;box-sizing:border-box;height:90px;background:var(--bg);color:var(--text);border:0;border-radius:10px;padding:8px;font:12px/1.4 monospace;user-select:text;-webkit-user-select:text"></textarea>
     <div class="setrow"><span>${step?'Bütün ilerleme, kristaller ve yetenekler silinir. Emin misin?':'Bütün ilerlemeyi sil'}</span>
       <button class="ghost danger" data-act="${step?'wipe':'reset'}">${step?'Evet, sil':'Sıfırla'}</button></div>
     <div class="acts" style="margin-top:12px"><button class="buy" data-act="close">Tamam</button></div>`,
     {snd:()=>{S.sound=!S.sound;openSettings(step);},reset:()=>openSettings(true),
+     // TEMP: progress export, remove later
+     exp:b=>{const o=serial();delete o.row;const code='YA1:'+btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+       const box=$('expBox');box.value=code;box.hidden=false;box.focus();box.select();
+       const done=()=>{b.textContent='Kopyalandı';};
+       try{navigator.clipboard.writeText(code).then(done,()=>{b.textContent='Seç ve kopyala';});}catch(e){b.textContent='Seç ve kopyala';}},
      wipe:()=>{try{localStorage.removeItem(SAVE_KEY);}catch(e){}S=fresh();resetWorld();closeModal();save();}});
 }
 function grantAway(sec,showModal){
