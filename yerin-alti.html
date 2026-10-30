@@ -245,10 +245,28 @@ const BIOMES=[
    back:'#3b2618',stone:'#4d3222',strata:['#8a5530','#9b6238','#7a4828','#a86d40'],deco:'roots',gauge:'#c98a4b',fog:'16,10,6'},
   {name:'Taşlık Bölge',dat:'Taşlık Bölge’ye',from:100,to:250,blocks:['rock','hardrock'],ores:[['iron',.07],['silver',.045],['emerald',.014]],
    back:'#26252c',stone:'#36343d',strata:['#67646f','#75727e','#5a5762','#827e8a'],deco:'stal',gauge:'#9a97a6',fog:'10,10,14'},
-  {name:'Demir Vadisi',dat:'Demir Vadisi’ne',from:250,to:Infinity,blocks:['ironrock','basalt'],ores:[['gold',.065],['ruby',.04],['diamond',.012],['crystal',.005]],
+  {name:'Demir Vadisi',dat:'Demir Vadisi’ne',from:250,to:500,blocks:['ironrock','basalt'],ores:[['gold',.065],['ruby',.04],['diamond',.012],['crystal',.005]],
    back:'#2c1717',stone:'#3f2220',strata:['#7b4036','#8c4c40','#6a372f','#97584a'],deco:'veins',gauge:'#c0574a',fog:'14,6,6'},
+  {name:'Kristal Mağarası',dat:'Kristal Mağarası’na',from:500,to:700,blocks:['amethystrock','crystalrock'],ores:[['amethyst',.06],['diamond',.02],['crystal',.012]],
+   back:'#211a33',stone:'#2f2547',strata:['#5a4588','#6a52a0','#4c3a76','#7a62b4'],deco:'crystals',decoC:'#c77dff',fog:'12,8,22'},
+  {name:'Mantar Ormanı',dat:'Mantar Ormanı’na',from:700,to:900,blocks:['mossy','mycel'],ores:[['spore',.06],['emerald',.03],['gold',.02]],
+   back:'#17261f',stone:'#21362b',strata:['#3f6e4c','#4b7d58','#355e41','#5a8c66'],deco:'mushroom',decoC:'#58f0d0',fog:'6,16,12'},
+  {name:'Lav Denizi',dat:'Lav Denizi’ne',from:900,to:1150,blocks:['magma','obsidian'],ores:[['fireopal',.06],['ruby',.04],['gold',.02]],
+   back:'#26100c',stone:'#3a1812',strata:['#5c2218','#6e2a1e','#4a1a12','#7c3222'],deco:'veins',fog:'20,6,4'},
+  {name:'Fosil Vadisi',dat:'Fosil Vadisi’ne',from:1150,to:1400,blocks:['sandstone','limestone'],ores:[['fossil',.07],['gold',.04],['diamond',.01]],
+   back:'#3a2e1e',stone:'#4a3c28',strata:['#a8865a','#b8966a','#977650','#c4a276'],deco:'bones',decoC:'#efe6d2',fog:'18,14,8'},
+  {name:'Kayıp Şehir',dat:'Kayıp Şehir’e',from:1400,to:1700,blocks:['ruinbrick','marble'],ores:[['relic',.06],['gold',.05],['emerald',.02]],
+   back:'#2a2620',stone:'#3a342b',strata:['#8a7656','#9a8664','#7a684a','#a89470'],deco:'pillars',decoC:'#d8d2c8',fog:'14,12,8'},
+  {name:'Ejderha Hazinesi',dat:'Ejderha Hazinesi’ne',from:1700,to:2000,blocks:['dragonrock','goldrock'],ores:[['dragongold',.07],['ruby',.04],['diamond',.02]],chestX:3,
+   back:'#2a1016',stone:'#3e1820',strata:['#5a2230','#6a2a3a','#4a1a26','#8a6a2a'],deco:'coins',decoC:'#ffc626',fog:'18,6,8'},
+  {name:'Yeraltı Okyanusu',dat:'Yeraltı Okyanusu’na',from:2000,to:2400,blocks:['seastone','coral'],ores:[['pearl',.06],['emerald',.03],['diamond',.015]],
+   back:'#0f2430',stone:'#163446',strata:['#24586e','#2c6680','#1e4a5e','#347490'],deco:'bubbles',decoC:'#9fe6ff',fog:'4,12,20'},
+  {name:'Zaman Koridoru',dat:'Zaman Koridoru’na',from:2400,to:2900,blocks:['timestone','brass'],ores:[['timesand',.06],['crystal',.02],['gold',.03]],
+   back:'#191736',stone:'#25224c',strata:['#36326e','#423d82','#2c285c','#4e4896'],deco:'clocks',decoC:'#ffd46b',fog:'8,8,22'},
+  {name:'Dünyanın Ötesi',from:2900,to:Infinity,blocks:['void','nebula'],ores:[['cosmic',.06],['diamond',.03],['crystal',.02]],
+   back:'#0c0a18',stone:'#161228',strata:['#1c1830','#2a2048','#140f26','#3a2a5a'],deco:'stars',decoC:'#ffffff',fog:'4,2,12'},
 ];
-const FUTURE=['Kristal Mağarası','Mantar Ormanı','Lav Denizi','Fosil Vadisi','Kayıp Şehir','Ejderha Hazinesi','Yeraltı Okyanusu','Zaman Koridoru','Dünyanın Ötesi'];
+const FUTURE=[];
 const BLOCKS={
   soil:{name:'Yumuşak Toprak',hp:1,gold:1,base:'#c07a42',dark:'#94582c',spk:'#d9975c',light:'#e0a56c'},
   hardsoil:{name:'Sert Toprak',hp:1.5,gold:1.5,base:'#9c5d31',dark:'#713f1e',spk:'#b5733f',light:'#c2834f'},
@@ -256,6 +274,24 @@ const BLOCKS={
   hardrock:{name:'Sert Kaya',hp:1.5,gold:1.5,base:'#73707c',dark:'#514e59',spk:'#8b8894',light:'#9996a2'},
   ironrock:{name:'Demirli Kaya',hp:1,gold:1,base:'#a35c4b',dark:'#7a3f33',spk:'#bd7462',light:'#c9806d'},
   basalt:{name:'Bazalt',hp:1.5,gold:1.5,base:'#5f5263',dark:'#423846',spk:'#776a7b',light:'#857888'},
+  amethystrock:{name:'Ametist Kayası',hp:1,gold:1,base:'#7a5aa8',dark:'#563d7e',spk:'#9a7bc8',light:'#a88ad4'},
+  crystalrock:{name:'Kristal Kaya',hp:1.5,gold:1.5,base:'#5d6aa8',dark:'#40497c',spk:'#7f8cc8',light:'#8e9ad4'},
+  mossy:{name:'Yosunlu Toprak',hp:1,gold:1,base:'#4f8a5e',dark:'#36654a',spk:'#6aa877',light:'#7cbb87'},
+  mycel:{name:'Miselyum',hp:1.5,gold:1.5,base:'#7a6a8e',dark:'#584b6a',spk:'#9787aa',light:'#a596b6'},
+  magma:{name:'Magma Kayası',hp:1,gold:1,base:'#8a3424',dark:'#561c14',spk:'#b04a30',light:'#a8452e',pat:'glow'},
+  obsidian:{name:'Obsidyen',hp:1.5,gold:1.5,base:'#2f2638',dark:'#17121c',spk:'#4a3d55',light:'#4a3e56'},
+  sandstone:{name:'Kumtaşı',hp:1,gold:1,base:'#c9a36a',dark:'#9c7a48',spk:'#e0bd86',light:'#e6c690'},
+  limestone:{name:'Kireçtaşı',hp:1.5,gold:1.5,base:'#b9b09a',dark:'#8e8672',spk:'#d2cab4',light:'#d6cfbb'},
+  ruinbrick:{name:'Antik Tuğla',hp:1,gold:1,base:'#a08a68',dark:'#75644a',spk:'#bba584',light:'#c2ae8c',pat:'brick'},
+  marble:{name:'Mermer',hp:1.5,gold:1.5,base:'#d8d2c8',dark:'#a9a296',spk:'#ece8e0',light:'#f0ece6'},
+  dragonrock:{name:'Ejder Kayası',hp:1,gold:1,base:'#7a3040',dark:'#4a1a26',spk:'#9c4456',light:'#9a4456'},
+  goldrock:{name:'Altın Yığını',hp:1.5,gold:1.5,base:'#b88a30',dark:'#7f581b',spk:'#ffce5a',light:'#d8a640',pat:'coins'},
+  seastone:{name:'Deniz Taşı',hp:1,gold:1,base:'#2f7590',dark:'#1f4d62',spk:'#4e93ad',light:'#5aa2bb',pat:'bubbles'},
+  coral:{name:'Mercan',hp:1.5,gold:1.5,base:'#d6735f',dark:'#9c4c40',spk:'#ee9580',light:'#f0a08c'},
+  timestone:{name:'Zaman Taşı',hp:1,gold:1,base:'#46408a',dark:'#2a2656',spk:'#6a64b0',light:'#5c56a0'},
+  brass:{name:'Pirinç Çark',hp:1.5,gold:1.5,base:'#a98a3e',dark:'#7a6229',spk:'#d2b25a',light:'#c9a956',pat:'gear'},
+  void:{name:'Boşluk',hp:1,gold:1,base:'#1f1a36',dark:'#0e0b1c',spk:'#3a3060',light:'#2e2850',pat:'stars'},
+  nebula:{name:'Nebula',hp:1.5,gold:1.5,base:'#4e2c70',dark:'#2e1a46',spk:'#7a4aa8',light:'#643a8c',pat:'stars'},
   coal:{name:'Kömür',hp:1.4,gold:3,host:'hardsoil',ore:'#2a2522',hi:'#7d736c',mineral:1},
   copper:{name:'Bakır',hp:1.8,gold:5,host:'soil',ore:'#f07d34',hi:'#ffc896',mineral:1},
   iron:{name:'Demir',hp:1.8,gold:4,host:'rock',ore:'#c9cfd8',hi:'#ffffff',mineral:1},
@@ -266,8 +302,17 @@ const BLOCKS={
   diamond:{name:'Elmas',hp:3,gold:22,host:'basalt',ore:'#7fe3ff',hi:'#ffffff',gem:1,mineral:1},
   crystal:{name:'Kristal',hp:3,gold:6,host:'ironrock',ore:'#b384ff',hi:'#efe4ff',gem:1,mineral:1,crystal:1},
   chest:{name:'Hazine Sandığı',hp:1.5,gold:0,chest:1,mineral:1},
+  amethyst:{name:'Ametist',hp:2.4,gold:12,host:'amethystrock',ore:'#c77dff',hi:'#f0d9ff',gem:1,mineral:1},
+  spore:{name:'Işıl Mantar',hp:2.2,gold:12,host:'mossy',ore:'#58f0d0',hi:'#e0fff8',mineral:1,shape:'mush'},
+  fireopal:{name:'Ateş Opali',hp:2.6,gold:14,host:'obsidian',ore:'#ff7a1a',hi:'#ffe08a',gem:1,mineral:1},
+  fossil:{name:'Fosil',hp:2.4,gold:13,host:'limestone',ore:'#f3ead6',hi:'#ffffff',mineral:1,shape:'shell'},
+  relic:{name:'Antik Kalıntı',hp:2.8,gold:16,host:'ruinbrick',ore:'#3fb7a8',hi:'#c8fff4',mineral:1,shape:'relic'},
+  dragongold:{name:'Ejder Altını',hp:3,gold:18,host:'dragonrock',ore:'#ffb21a',hi:'#fff2b0',mineral:1},
+  pearl:{name:'İnci',hp:2.6,gold:16,host:'seastone',ore:'#f4f0ff',hi:'#ffffff',mineral:1,shape:'pearl'},
+  timesand:{name:'Zaman Kumu',hp:3,gold:18,host:'timestone',ore:'#ffd46b',hi:'#fff6d0',mineral:1},
+  cosmic:{name:'Kozmik Enerji',hp:3.2,gold:22,host:'void',ore:'#7af0ff',hi:'#ffffff',gem:1,mineral:1},
 };
-const MINERALS=['coal','copper','iron','silver','emerald','gold','ruby','diamond','crystal','chest'];
+const MINERALS=['coal','copper','iron','silver','emerald','gold','ruby','diamond','crystal','chest','amethyst','spore','fireopal','fossil','relic','dragongold','pearl','timesand','cosmic'];
 const WORKERS=[
   {id:'cirak',name:'Çırak Madenci',tag:'Ucuz ve çalışkan',cost:15,dps:1,period:.9,scale:.8,draw:'human',tint:'#2b3a55',look:{helmet:'#ffd23f',shirt:'#3f86e8',pants:'#2a4f8f',skin:'#f6c7a0',tool:'pick'}},
   {id:'kopek',name:'Kazıcı Köpek',tag:'Çok hızlı patiler',cost:110,dps:5,period:.32,scale:.74,draw:'dog',animal:1,tint:'#4a3524'},
@@ -278,7 +323,10 @@ const WORKERS=[
 ];
 const PLAYER_LOOK={helmet:'#ffd23f',shirt:'#ff8a2b',pants:'#2a5cab',skin:'#f6c7a0',tool:'pick',overall:1};
 const TIER_NAMES=[['Çelik Kazma','Elmas Uçlu Kazma'],['Kemik Ödülü','Çelik Tırnaklar'],['Ağır Balyoz','Usta İşi Teknik'],['Keskin Pençe','Toprak Sezgisi'],['Uzun Fitil','Çifte Paket'],['Hidrolik Kol','Turbo Motor']];
-const TIER_REQ=[10,25], TIER_COST=[60,1200];
+// ×2 tiers never run out: 10, 25, then every 50 hires
+const tierReq=t=>t<2?[10,25][t]:50*(t-1);
+const tierCost=(i,t)=>WORKERS[i].cost*(t<2?[60,1200][t]:1200*Math.pow(40,t-1));
+const tierName=(i,t)=>t<2?TIER_NAMES[i][t]:`${TIER_NAMES[i][1]} +${t-1}`;
 const tapBase=L=>(1+L)*Math.pow(1.08,L);
 const LEVELED=[
   {id:'kazma',name:'Kazma Gücü',icon:'pick',ic:'c-acc',cost:L=>20*Math.pow(1.5,L),desc:L=>`Dokunuş ${fmt(tapBase(L))} → ${fmt(tapBase(L+1))}`},
@@ -314,11 +362,15 @@ const ACH=[
   {id:'tas',name:'Taşlara Merhaba',desc:'100 metreye in',t:()=>S.stats.bestDepth>=100},
   {id:'demir',name:'Demir Yolu',desc:'250 metreye in',t:()=>S.stats.bestDepth>=250},
   {id:'yarim',name:'Yarım Kilometre',desc:'500 metreye in',t:()=>S.stats.bestDepth>=500},
+  {id:'bin',name:'Bin Metre',desc:'1000 metreye in',t:()=>S.stats.bestDepth>=1000},
+  {id:'ejder',name:'Ejder Avcısı',desc:'Ejderha Hazinesi’ne ulaş',t:()=>S.stats.bestDepth>=1700},
+  {id:'oteki',name:'Dünyanın Ötesi',desc:'2900 metreye in',t:()=>S.stats.bestDepth>=2900},
   {id:'makine',name:'Makine Çağı',desc:'Mini Ekskavatör al',t:()=>S.own[5]>=1},
   {id:'hazine',name:'Hazine Avcısı',desc:'5 sandık aç',t:()=>S.stats.chests>=5},
   {id:'kritik',name:'Kritik Usta',desc:'100 kritik vuruş yap',t:()=>S.stats.crits>=100},
   {id:'sefer',name:'Yeni Sefer',desc:'İlk seferini tamamla',t:()=>S.stats.runs>=1},
-  {id:'kolek',name:'Koleksiyoncu',desc:'10 maden türünün hepsini bul',t:()=>MINERALS.every(m=>S.found[m])},
+  {id:'kolek',name:'Koleksiyoncu',desc:'İlk 10 maden türünü bul',t:()=>MINERALS.slice(0,10).every(m=>S.found[m])},
+  {id:'kolek2',name:'Büyük Koleksiyoncu',desc:`${MINERALS.length} maden türünün hepsini bul`,t:()=>MINERALS.every(m=>S.found[m])},
 ];
 const ICONS={
   pick:'<path d="M4 9c5-5 11-5 16 0"/><path d="M12 6L6 21"/>',
@@ -377,18 +429,22 @@ function workerDps(i,nb,count){
   if(w.animal) m*=1+.4*tal('hayvan');
   if(w.machine) m*=1+.4*tal('makine');
   if(i===4&&has('zincir')) m*=2;
-  return m*BM(nb);
+  return m*BM(nb)*crysMult();
 }
 function teamDps(nb){let s=0;for(let i=0;i<WORKERS.length;i++)s+=workerDps(i,nb);return s;}
-function tapDmg(){return (tapBase(lv('kazma'))*(1+.25*tal('bilek'))+teamDps(true)*((has('sezgi')?.02:0)+(has('eller')?.05:0)))*BM();}
+const crysMult=()=>1+.05*S.crystals; // every unspent crystal: +5% damage and gold
+function tapDmg(){return (tapBase(lv('kazma'))*(1+.25*tal('bilek'))*crysMult()+teamDps(true)*((has('sezgi')?.02:0)+(has('eller')?.05:0)))*BM();}
 const critChance=()=>Math.min(.5,.04+.03*lv('krit'));
 const critMult=()=>3+.5*lv('kritg');
 const achCount=()=>Object.keys(S.ach).length;
-function goldMult(nb){return (1+.15*lv('altin'))*(1+.2*tal('sezgi'))*(1+.03*achCount())*BM(nb);}
-const hpAt=d=>4.8*(1+.12*d)*Math.pow(1.042,d);
-const goldPerHp=d=>.15*Math.pow(1.0035,d);
+function goldMult(nb){return (1+.15*lv('altin'))*(1+.2*tal('sezgi'))*(1+.03*achCount())*crysMult()*BM(nb);}
+// per-metre growth of block HP and gold-per-HP; unchanged up to 300 m, gentler HP and richer gold below
+const GROW=[[300,Math.log(1.042),Math.log(1.0035)],[1000,.015,.06],[3000,.007,.028],[Infinity,.0045,.018]];
+function lnGrow(d,j){let s=0,prev=0;for(const sg of GROW){const a=Math.min(d,sg[0])-prev;if(a<=0)break;s+=a*sg[j];prev=sg[0];}return s;}
+const hpAt=d=>4.8*(1+.12*d)*Math.exp(lnGrow(d,1));
+const goldPerHp=d=>.15*Math.exp(lnGrow(d,2));
 function goldRate(nb){return teamDps(nb)*goldPerHp(S.depth)*goldMult(nb)*1.1;}
-const biomeIdx=r=>r>=250?2:r>=100?1:0;
+function biomeIdx(r){for(let i=BIOMES.length-1;i>0;i--)if(r>=BIOMES[i].from)return i;return 0;}
 const offlineCap=()=>(2+lv('depo'))*3600;
 const offlineEff=()=>.5+.1*tal('vardiya');
 function crystalsFor(){const d=S.runMax;if(d<100)return 0;return Math.floor(Math.pow(d/25,1.5)*(1+.1*tal('kristal')));}
@@ -405,7 +461,7 @@ function rowTypes(r){
     const u=hash(r,c,S.seed), u2=hash(r,c,S.seed+911);
     let type=null;
     if(r>2){
-      const cp=.007*(has('sandik')?2:1);
+      const cp=.007*(has('sandik')?2:1)*(b.chestX||1);
       if(u<cp) type='chest';
       else{let acc=cp;const om=has('dedektor')?2:1;for(const [id,p] of b.ores){acc+=p*om;if(u<acc){type=id;break;}}}
     }
@@ -496,7 +552,26 @@ function paintBlock(c,type,host,variant,s){
     else{c.strokeStyle=H0.dark;c.lineWidth=s*.02;c.beginPath();let x=s*.15,y=s*(.3+R()*.4);c.moveTo(x,y);for(let k=0;k<5;k++){x+=s*.14;y+=(R()-.5)*s*.16;c.lineTo(x,y);}c.stroke();}
   }
   if(variant===3&&!T.ore&&!T.chest&&R()<.5){const x=s*.3,y=s*.62;c.strokeStyle='rgba(255,246,225,.75)';c.lineWidth=s*.025;c.beginPath();for(let k=0;k<4;k++){c.moveTo(x,y);c.arc(x,y,s*(.04+k*.03),Math.PI,Math.PI*1.9);}c.stroke();}
-  if(T.ore){
+  if(H0.pat==='brick'){c.strokeStyle=H0.dark;c.lineWidth=s*.03;for(let k=1;k<3;k++){c.beginPath();c.moveTo(0,s*k/3);c.lineTo(s,s*k/3);c.stroke();}
+    for(let k=0;k<3;k++){const off=k%2?s*.5:s*.25;c.beginPath();c.moveTo(off,s*k/3);c.lineTo(off,s*(k+1)/3);c.moveTo(off+s*.5,s*k/3);c.lineTo(off+s*.5,s*(k+1)/3);c.stroke();}}
+  if(H0.pat==='glow'){c.lineCap='round';c.shadowColor='#ff8a2b';c.shadowBlur=s*.08;c.strokeStyle='#ffb347';c.lineWidth=s*.03;c.beginPath();let x=s*(.1+R()*.2),y=s*(.3+R()*.4);c.moveTo(x,y);for(let k=0;k<5;k++){x+=s*.16;y+=(R()-.5)*s*.25;c.lineTo(x,y);}c.stroke();c.shadowBlur=0;}
+  if(H0.pat==='stars'){for(let k=0;k<9;k++){c.fillStyle=R()<.3?'#c9a8ff':'#ffffff';c.globalAlpha=.4+R()*.6;const z=s*(.01+R()*.02);c.fillRect(R()*s,s*.12+R()*s*.78,z,z);}c.globalAlpha=1;
+    c.fillStyle='#fff';const sx=s*(.25+R()*.5),sy=s*(.3+R()*.4),z=s*.05;c.beginPath();c.moveTo(sx,sy-z*2);c.lineTo(sx+z*.4,sy-z*.4);c.lineTo(sx+z*2,sy);c.lineTo(sx+z*.4,sy+z*.4);c.lineTo(sx,sy+z*2);c.lineTo(sx-z*.4,sy+z*.4);c.lineTo(sx-z*2,sy);c.lineTo(sx-z*.4,sy-z*.4);c.closePath();c.fill();}
+  if(H0.pat==='bubbles'){c.strokeStyle='rgba(220,250,255,.45)';c.lineWidth=s*.018;for(let k=0;k<4;k++){circ(c,s*(.15+R()*.7),s*(.2+R()*.65),s*(.03+R()*.05));c.stroke();}}
+  if(H0.pat==='coins'){for(let k=0;k<5;k++){const x=s*(.15+R()*.7),y=s*(.2+R()*.65);ell(c,x,y,s*.09,s*.055);c.fillStyle='#ffd34a';c.fill();c.strokeStyle='#8a5a08';c.lineWidth=s*.015;c.stroke();}}
+  if(H0.pat==='gear'){const x=s*(.35+R()*.3),y=s*(.4+R()*.25),r=s*.18;c.strokeStyle=H0.dark;c.lineWidth=s*.04;circ(c,x,y,r);c.stroke();circ(c,x,y,r*.35);c.stroke();
+    for(let k=0;k<8;k++){const a=k/8*Math.PI*2;c.beginPath();c.moveTo(x+Math.cos(a)*r,y+Math.sin(a)*r);c.lineTo(x+Math.cos(a)*r*1.3,y+Math.sin(a)*r*1.3);c.stroke();}}
+  if(T.shape){
+    // special mineral silhouettes
+    const n=T.shape==='pearl'?4:3;
+    for(let k=0;k<n;k++){const x=s*(.25+R()*.5),y=s*(.28+R()*.48),r=s*(.08+R()*.05);c.save();c.translate(x,y);c.lineWidth=s*.022;c.strokeStyle='rgba(20,10,5,.7)';
+      if(T.shape==='shell'){c.fillStyle=T.ore;circ(c,0,0,r*1.3);c.fill();c.stroke();c.beginPath();for(let a=0;a<12;a+=.3){const rr2=r*1.2*(1-a/12);c.lineTo(Math.cos(a)*rr2,Math.sin(a)*rr2);}c.stroke();}
+      else if(T.shape==='pearl'){c.fillStyle=T.ore;circ(c,0,0,r);c.fill();c.stroke();circ(c,-r*.35,-r*.35,r*.3);c.fillStyle='#fff';c.fill();}
+      else if(T.shape==='mush'){c.shadowColor=T.ore;c.shadowBlur=s*.08;c.fillStyle='#f4ead6';c.fillRect(-r*.25,-r*.1,r*.5,r*1.1);c.beginPath();c.arc(0,-r*.1,r,Math.PI,0);c.closePath();c.fillStyle=T.ore;c.fill();c.shadowBlur=0;c.stroke();c.fillStyle=T.hi;circ(c,-r*.4,-r*.5,r*.18);c.fill();}
+      else if(T.shape==='relic'){c.rotate(R()-.5);rr(c,-r,-r*1.2,r*2,r*2.4,r*.3);c.fillStyle=T.ore;c.fill();c.stroke();c.strokeStyle=T.hi;c.lineWidth=s*.018;c.beginPath();c.arc(0,-r*.2,r*.5,0,Math.PI*2);c.moveTo(-r*.6,r*.6);c.lineTo(r*.6,r*.6);c.stroke();}
+      c.restore();}
+  }
+  if(T.ore&&!T.shape){
     const n=T.gem?3:4+Math.floor(R()*2);
     for(let k=0;k<n;k++){
       const x=s*(.22+R()*.56),y=s*(.24+R()*.52),r=s*(T.gem?.13+R()*.05:.08+R()*.06),rot=R()*Math.PI;
@@ -528,7 +603,7 @@ function blockTex(type,host,variant){
   t=document.createElement('canvas');const px=Math.ceil(B*DPR);t.width=t.height=px;
   paintBlock(t.getContext('2d'),type,host,variant,px);texCache.set(key,t);return t;
 }
-function hostFor(type,r){const T=BLOCKS[type];if(T.host)return T.host;if(T.chest)return BIOMES[biomeIdx(r)].blocks[0];return type;}
+function hostFor(type,r){const T=BLOCKS[type],b=BIOMES[biomeIdx(r)];if(T.host&&b.blocks.includes(T.host))return T.host;if(T.ore||T.chest)return b.blocks[0];return type;}
 const variantOf=(r,c)=>Math.floor(hash(r,c,77)*4);
 function thumb(type){
   let u=thumbCache.get(type);if(u)return u;
@@ -559,6 +634,19 @@ function strataTile(bi,side){
   if(b.deco==='roots'){c.strokeStyle='#5c3418';c.lineCap='round';for(let i=0;i<3;i++){let x=R()*w,yy=R()*h;c.lineWidth=B*.03;c.beginPath();c.moveTo(x,yy);for(let j=0;j<4;j++){x+=(R()-.5)*B*.4;yy+=B*.2;c.lineTo(x,yy);}c.stroke();}
     if(R()<.9){const x=w*.5,yy=h*(.2+R()*.6);c.strokeStyle='rgba(255,246,225,.7)';c.lineWidth=B*.035;c.beginPath();c.moveTo(x-B*.15,yy);c.lineTo(x+B*.15,yy);c.stroke();circ(c,x-B*.17,yy,B*.04);c.fillStyle='rgba(255,246,225,.7)';c.fill();circ(c,x+B*.17,yy,B*.04);c.fill();}}
   if(b.deco==='stal'){const x=w*(.3+R()*.4),yy=h*(.2+R()*.6),r=B*.14;c.strokeStyle='rgba(240,235,220,.55)';c.lineWidth=B*.025;c.beginPath();for(let k=0;k<4;k++)c.arc(x,yy,r*(.3+k*.25),Math.PI*.1,Math.PI*1.6);c.stroke();}
+  if(b.decoC&&b.deco!=='roots'&&b.deco!=='stal'&&b.deco!=='veins'){
+    // small themed props embedded in the side walls
+    for(let i=0;i<5;i++){const x=w*(.2+R()*.6),yy=R()*h,r=Math.min(w*.22,B*(.08+R()*.06));c.save();c.translate(x,yy);c.globalAlpha=.85;c.fillStyle=b.decoC;c.strokeStyle=b.decoC;c.lineWidth=Math.max(1.5,B*.025);
+      if(b.deco==='crystals'){for(let k=-1;k<=1;k++){c.save();c.rotate(k*.45);c.beginPath();c.moveTo(0,-r*1.6);c.lineTo(r*.4,0);c.lineTo(-r*.4,0);c.closePath();c.fill();c.restore();}}
+      else if(b.deco==='mushroom'){c.shadowColor=b.decoC;c.shadowBlur=8;c.fillRect(-r*.15,-r*.2,r*.3,r*.8);c.beginPath();c.arc(0,-r*.2,r*.7,Math.PI,0);c.closePath();c.fill();c.shadowBlur=0;}
+      else if(b.deco==='bones'){c.beginPath();c.moveTo(-r,0);c.lineTo(r,0);c.stroke();circ(c,-r,-r*.25,r*.25);c.fill();circ(c,-r,r*.25,r*.25);c.fill();circ(c,r,-r*.25,r*.25);c.fill();circ(c,r,r*.25,r*.25);c.fill();}
+      else if(b.deco==='pillars'){c.globalAlpha=.4;c.fillRect(-r*.5,-r*2,r,r*4);c.globalAlpha=.6;c.fillRect(-r*.8,-r*2.2,r*1.6,r*.4);}
+      else if(b.deco==='coins'){for(let k=0;k<3;k++){ell(c,(k-1)*r*.7,k%2*r*.3,r*.45,r*.3);c.fill();}}
+      else if(b.deco==='bubbles'){c.globalAlpha=.5;for(let k=0;k<3;k++){circ(c,(R()-.5)*r*2,(R()-.5)*r*3,r*(.25+R()*.3));c.stroke();}}
+      else if(b.deco==='clocks'){circ(c,0,0,r);c.stroke();c.beginPath();c.moveTo(0,0);c.lineTo(0,-r*.7);c.moveTo(0,0);c.lineTo(r*.5,0);c.stroke();}
+      else if(b.deco==='stars'){for(let k=0;k<4;k++){const sx=(R()-.5)*w*.8,sy=(R()-.5)*B,ss=R()*2+1;c.fillRect(sx,sy,ss,ss);}}
+      c.restore();}
+  }
   if(b.deco==='veins'){c.lineCap='round';for(let i=0;i<2;i++){let x=R()*w,yy=R()*h;c.beginPath();c.moveTo(x,yy);for(let j=0;j<4;j++){x+=(R()-.5)*B*.5;yy+=B*.25;c.lineTo(x,yy);}c.shadowColor='#ff6a2a';c.shadowBlur=8;c.strokeStyle='rgba(255,130,60,.75)';c.lineWidth=B*.025;c.stroke();c.shadowBlur=0;}}
   const gr=side==='L'?c.createLinearGradient(w,0,w-Math.min(w,B*.6),0):c.createLinearGradient(0,0,Math.min(w,B*.6),0);
   gr.addColorStop(0,'rgba(0,0,0,.55)');gr.addColorStop(1,'rgba(0,0,0,0)');c.fillStyle=gr;c.fillRect(0,0,w,h);
@@ -705,10 +793,13 @@ function syncSprites(){
 }
 // every hire is visible: new characters drop in; once the crew is at its display cap, one of them drops in again
 function hireDrop(i,n,before){
+  // one falling character per hire (×10 drops ten), capped by how many are on screen
   const mine=sprites.filter(s=>s.i===i);if(!mine.length)return;
-  let sp=mine[mine.length-1];
-  if(mine.length<=before){sp=mine[Math.floor(Math.random()*mine.length)];sp.y=camY-B*.6;sp.vy=0;}
-  floatText(sp.x,camY+B*.9,`+${n} ${WORKERS[i].name}`,'#7fe0a0',15,{max:1.3,vy:20});
+  const added=Math.max(0,mine.length-before),old=mine.slice(0,before).sort(()=>Math.random()-.5);
+  const again=Math.min(n-added,old.length);
+  for(let k=0;k<again;k++){const sp=old[k];sp.y=camY-B*(.6+(added+k)*.35);sp.vy=0;}
+  const sp=mine[mine.length-1];
+  floatText(clamp(sp.x,B*1.5,W-B*1.5),camY+B*.9,`+${n} ${WORKERS[i].name}`,'#7fe0a0',15,{max:1.3,vy:20});
 }
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function spawnParts(x,y,n,color,o){
@@ -1172,7 +1263,7 @@ function updateHud(){
   $('hCrys').textContent=fmt(S.crystals);
   const bi=biomeIdx(S.depth),b=BIOMES[bi];
   $('rName').textContent=b.name;
-  if(b.to===Infinity){$('rTxt').textContent=`${FUTURE[0]} yakında`;$('rBar').style.width='100%';}
+  if(b.to===Infinity){$('rTxt').textContent='Sonsuz derinlik';$('rBar').style.width='100%';}
   else{$('rTxt').textContent=`${BIOMES[bi+1].dat} ${b.to-S.depth} m`;$('rBar').style.width=((S.depth-b.from)/(b.to-b.from)*100).toFixed(1)+'%';}
   // buff ring: full gold when ready, drains while active, refills grey during cooldown
   const bt=$('boost'),ring=$('boostRing'),n=now(),mmss=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
@@ -1196,10 +1287,10 @@ function buildItems(tab){
       const vis=i===0||S.own[i-1]>0||S.own[i]>0;
       if(!vis){if(!lockShown){lockShown=true;out.push({key:'wl'+i,locked:1,ic:portraitIc(i,1),t:'Kilitli ekip',g:'',m:'',d:`${WORKERS[i-1].name} işe alınca açılır`,nobtn:1});}return;}
       const q=buyQuote(i),own=S.own[i],t=S.tiers[i],gain=workerDps(i,false,own+q.n)-workerDps(i);
-      const req=t<2?TIER_REQ[t]:0;
+      const req=tierReq(t);
       out.push({key:'w'+i,ic:portraitIc(i),t:w.name,g:own?`${own} adet`:'Yeni',
         m:`${fmt(workerDps(i))}/sn hasar`,em:`+${fmt(gain)}/sn`,
-        d:w.tag+(t<2?` · ×2 için ${Math.min(own,req)}/${req}`:''),bar:t<2?Math.min(1,own/req):null,
+        d:w.tag+` · ×2 için ${Math.min(own,req)}/${req}`,bar:Math.min(1,own/req),
         b:'İşe al'+(q.n>1?' ×'+q.n:''),c:fmt(q.cost),cur:'gold',can:S.gold>=q.cost,pulse:i===0&&own===0&&S.gold>=q.cost,
         act:()=>{if(S.gold<q.cost)return false;S.gold-=q.cost;const before=sprites.filter(s=>s.i===i).length;S.own[i]+=q.n;syncSprites();hireDrop(i,q.n,before);return true;}});
     });
@@ -1211,9 +1302,9 @@ function buildItems(tab){
     }
     const once=[];
     WORKERS.forEach((w,i)=>{
-      const t=S.tiers[i];if(t>=2||(S.own[i]===0&&i!==0))return;
-      const req=TIER_REQ[t],c=w.cost*TIER_COST[t],ok=S.own[i]>=req;
-      once.push({key:'t'+i+'_'+t,ic:portraitIc(i),t:TIER_NAMES[i][t],g:'Tek sefer',m:`${w.name} hasarı ×2`,d:ok?'':`${req} ${w.name} gerekli (${S.own[i]}/${req})`,
+      const t=S.tiers[i];if(S.own[i]===0&&i!==0)return;
+      const req=tierReq(t),c=tierCost(i,t),ok=S.own[i]>=req;
+      once.push({key:'t'+i+'_'+t,ic:portraitIc(i),t:tierName(i,t),g:`${t+1}. kademe`,m:`${w.name} hasarı ×2`,d:ok?'':`${req} ${w.name} gerekli (${S.own[i]}/${req})`,
         bar:ok?null:S.own[i]/req,b:'Al',c:fmt(c),cur:'gold',can:ok&&S.gold>=c,cost:c,locked:!ok,
         act:()=>{if(!ok||S.gold<c)return false;S.gold-=c;S.tiers[i]++;return true;}});
     });
@@ -1256,7 +1347,7 @@ function renderPanel(){
   const head=$('pHead');let hh;
   if(tab==='ekip') hh=`Toplam <b>${fmt(teamDps())}/sn</b> hasar`;
   else if(tab==='gel') hh=`Dokunuş <b>${fmt(tapDmg())}</b> · Kritik <b>%${Math.round(critChance()*100)}</b> ×${dec(critMult())}`;
-  else if(tab==='yet') hh=`<b style="color:var(--crystal)">${fmt(S.crystals)}</b> kristal · seferler arası kalır`;
+  else if(tab==='yet') hh=`<b style="color:var(--crystal)">${fmt(S.crystals)}</b> kristal · harcanmayan her kristal hasar ve altın +%5`;
   else hh=`Maden <b>${MINERALS.filter(m=>S.found[m]).length}/${MINERALS.length}</b> · Başarım <b>${achCount()}/${ACH.length}</b> (her biri +%3 altın)`;
   if(head.innerHTML!==hh)head.innerHTML=hh;
   if(tab==='kol'){
@@ -1286,8 +1377,7 @@ function collectionHTML(){
   h+=`</div><p class="note">Sonraki güncellemelerde 20 ekip daha: hayvanlar, makineler ve fantastik ekipler.</p>`;
   h+=`<h3>Bölgeler <span>${BIOMES.filter(b=>best>=b.from).length}/${BIOMES.length+FUTURE.length}</span></h3><div class="regions">`;
   BIOMES.forEach(b=>{const on=best>=b.from;h+=`<div class="reg ${on?'':'off'}"><b>${on?b.name:'???'}</b><span>${b.from}–${b.to===Infinity?'…':b.to} m</span></div>`;});
-  FUTURE.slice(0,3).forEach(n=>{h+=`<div class="reg off"><b>${n}</b><span>Yakında</span></div>`;});
-  h+=`</div><h3>Madenler <span>${MINERALS.filter(m=>S.found[m]).length}/${MINERALS.length}</span></h3><div class="tiles">`;
+    h+=`</div><h3>Madenler <span>${MINERALS.filter(m=>S.found[m]).length}/${MINERALS.length}</span></h3><div class="tiles">`;
   MINERALS.forEach(m=>{const on=S.found[m];h+=`<div class="tile ${on?'on':'off'}"><img alt="" src="${thumb(m)}">${on?BLOCKS[m].name:'???'}</div>`;});
   h+=`</div><h3>Başarımlar <span>${achCount()}/${ACH.length}</span></h3><div class="achs">`;
   ACH.forEach(a=>{const on=S.ach[a.id];h+=`<div class="ach ${on?'on':''}"><i>${on?'✓':''}</i><div><b>${a.name}</b><small>${a.desc}</small></div></div>`;});
@@ -1313,7 +1403,7 @@ function openPrestige(){
   const n=crystalsFor();
   openModal(`<h2>Yeni Sefer</h2><p>Bu kazıyı burada bitirip yüzeye çıkarsan kalıcı kristaller kazanırsın. Kristallerle Yetenekler sekmesinden kalıcı güçler öğrenirsin.</p>
     <div class="gain c"><span class="gem lg"></span>+${fmt(n)} kristal</div>
-    <ul><li><b>Sıfırlanır:</b> derinlik (${S.runMax} m), altın, kazı ekibi, geliştirmeler</li><li><b>Kalır:</b> kristaller, yetenekler, başarımlar, koleksiyon</li>
+    <ul><li><b>Sıfırlanır:</b> derinlik (${S.runMax} m), altın, kazı ekibi, geliştirmeler</li><li><b>Kalır:</b> kristaller, yetenekler, başarımlar, koleksiyon</li><li><b>Bonus:</b> harcanmayan her kristal hasar ve altın +%5</li>
     ${tal('sermaye')?`<li><b>Başlangıç:</b> ${fmt(startGold())} altın</li>`:''}</ul>
     <div class="acts"><button class="ghost" data-act="close">Vazgeç</button><button class="buy cry" data-act="go">Sefere çık</button></div>`,
     {go:()=>{doPrestige(n);closeModal();}});
