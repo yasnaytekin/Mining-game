@@ -1,0 +1,56 @@
+name: Android
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - yerin-alti.html
+      - app/**
+      - .github/workflows/android.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - run: npm run build:web && npx cap sync android
+      - run: chmod +x android/gradlew
+
+      - name: Test APK (telefona doğrudan kurulur)
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+        run: cd android && ./gradlew assembleDebug
+
+      - name: Play Store AAB (imza anahtarı eklendiyse)
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+          KEYSTORE_B64: ${{ secrets.KAZDIKCA_KEYSTORE_BASE64 }}
+          KAZDIKCA_KEYSTORE_PASSWORD: ${{ secrets.KAZDIKCA_KEYSTORE_PASSWORD }}
+          KAZDIKCA_KEY_ALIAS: ${{ secrets.KAZDIKCA_KEY_ALIAS }}
+          KAZDIKCA_KEY_PASSWORD: ${{ secrets.KAZDIKCA_KEY_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ]; then echo "İmza anahtarı tanımlı değil; Play Store AAB atlandı."; exit 0; fi
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          export KAZDIKCA_KEYSTORE="$RUNNER_TEMP/release.jks"
+          cd android && ./gradlew bundleRelease
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kazdikca-android
+          path: |
+            app/android/app/build/outputs/apk/debug/*.apk
+            app/android/app/build/outputs/bundle/release/*.aab
+          if-no-files-found: warn

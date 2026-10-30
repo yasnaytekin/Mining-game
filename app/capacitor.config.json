@@ -1,0 +1,8 @@
+{
+  "appId": "com.kazdikca.app",
+  "appName": "Kazdıkça",
+  "webDir": "www",
+  "backgroundColor": "#14161b",
+  "android": { "backgroundColor": "#14161b" },
+  "ios": { "backgroundColor": "#14161b", "contentInset": "never" }
+}

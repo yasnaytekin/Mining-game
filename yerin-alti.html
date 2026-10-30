@@ -1,4 +1,4 @@
-<title>Yerin Altı</title>
+<title>Kazdıkça</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1170,7 +1170,7 @@ function drawSurface(cy){
   const sw=Math.min(B*2.4,SW*.62),sx=SX+SW/2-sw/2+B*.25,sy=top+B*.32;
   g.strokeStyle='#3a2414';g.lineWidth=Math.max(1.5,B*.025);g.beginPath();g.moveTo(sx+sw*.15,top+B*.12);g.lineTo(sx+sw*.15,sy);g.moveTo(sx+sw*.85,top+B*.12);g.lineTo(sx+sw*.85,sy);g.stroke();
   rr(g,sx,sy,sw,B*.42,B*.08);fs(g,'#ffcb3d',lw);
-  g.fillStyle='#3a2604';g.font=`700 ${Math.round(B*.25)}px Fredoka,"Trebuchet MS",sans-serif`;g.textAlign='center';g.textBaseline='middle';g.fillText('YERİN ALTI',sx+sw/2,sy+B*.22);
+  g.fillStyle='#3a2604';g.font=`700 ${Math.round(B*.25)}px Fredoka,"Trebuchet MS",sans-serif`;g.textAlign='center';g.textBaseline='middle';g.fillText('KAZDIKÇA',sx+sw/2,sy+B*.22);
 }
 function drawWalls(cy,firstRow,lastRow){
   for(let r=firstRow;r<=lastRow;r++){
@@ -1669,8 +1669,8 @@ function openSettings(step){
     <div class="setrow"><span>Ses efektleri</span><button class="ghost" data-act="snd">${S.sound?'Açık':'Kapalı'}</button></div>
     <div class="setrow"><span>Sayı gösterimi</span><button class="ghost" data-act="num">${S.numFmt==='sci'?'Bilimsel (1,2·10⁹)':'Standart (1,2 Mr)'}</button></div>
     <div class="setrow"><span style="color:var(--muted)">Oyun kendini her 5 saniyede bu tarayıcıya kaydeder.</span></div>
-    <!-- TEMP: progress export, remove later -->
-    <div class="setrow"><span>İlerleme kodu</span><button class="ghost" data-act="exp">Kopyala</button></div>
+    <!-- TEMP: progress export, remove later (hidden in the native app) -->
+    ${window.Capacitor?'':`<div class="setrow"><span>İlerleme kodu</span><button class="ghost" data-act="exp">Kopyala</button></div>`}
     <textarea id="expBox" readonly hidden style="width:100%;box-sizing:border-box;height:90px;background:var(--bg);color:var(--text);border:0;border-radius:10px;padding:8px;font:12px/1.4 monospace;user-select:text;-webkit-user-select:text"></textarea>
     <div class="setrow"><span>${step?'Bütün ilerleme, kristaller ve yetenekler silinir. Emin misin?':'Bütün ilerlemeyi sil'}</span>
       <button class="ghost danger" data-act="${step?'wipe':'reset'}">${step?'Evet, sil':'Sıfırla'}</button></div>

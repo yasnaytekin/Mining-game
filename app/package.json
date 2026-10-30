@@ -1,0 +1,20 @@
+{
+  "name": "kazdikca",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kazdıkça: iOS ve Android uygulaması (Capacitor)",
+  "scripts": {
+    "build:web": "node scripts/build-web.mjs",
+    "build": "npm run build:web && npx cap sync",
+    "assets": "npx @capacitor/assets generate --iconBackgroundColor '#ff8a2b' --splashBackgroundColor '#14161b' --splashBackgroundColorDark '#14161b'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.6.10",
+    "@capacitor/core": "^7.6.10",
+    "@capacitor/ios": "^7.6.10"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.6.10"
+  }
+}
