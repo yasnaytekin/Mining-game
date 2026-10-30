@@ -82,7 +82,7 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .buff:disabled{cursor:default}
 .buff.cool .ring span{background:#22252c;color:var(--muted)}
 @keyframes glow{to{box-shadow:0 0 0 3px rgba(255,203,61,.3),0 0 16px 4px rgba(255,203,61,.45)}}
-.toasts{position:absolute;left:10px;right:10px;bottom:10px;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none}
+.toasts{position:absolute;left:10px;right:10px;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none}
 .toast{max-width:100%;background:rgba(14,15,20,.88);border-radius:999px;padding:4px 12px;font-size:.7rem;text-align:center;animation:tin .25s ease-out;color:var(--muted)}
 .toast b{font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--gold);letter-spacing:.02em;margin-right:6px}
 .toast.cr b{color:var(--crystal)}
@@ -90,6 +90,7 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 @keyframes tin{from{opacity:0;transform:translateY(-8px)}}
 .banner{position:absolute;left:50%;top:34%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;
   animation:ban 2.6s ease-in-out forwards;width:max-content;max-width:90%}
+.banner em{display:block;font-style:normal;font-size:.78rem;font-weight:800;color:#fff;margin-top:6px;text-shadow:0 2px 0 #000;max-width:300px;margin-inline:auto;text-wrap:balance}
 .banner small{display:block;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 #000}
 .banner b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,7vw,2.8rem);color:var(--gold);
   text-shadow:0 3px 0 #6b3a00,0 0 26px rgba(0,0,0,.85);text-wrap:balance}
@@ -119,7 +120,7 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .tx .t{display:flex;align-items:center;gap:6px;min-width:0}
 .tx .t span:first-child{font-family:var(--display);font-weight:700;font-size:.95rem;letter-spacing:.01em;line-height:1.1;overflow-wrap:anywhere}
 .tag{flex:none;font-size:.6rem;font-weight:900;background:var(--surface-3);color:var(--text);border-radius:999px;padding:1px 6px;font-variant-numeric:tabular-nums}
-.tx .m{font-size:.75rem;color:var(--gold);margin-top:1px;font-weight:900;font-variant-numeric:tabular-nums}
+.tx .m{font-size:.82rem;color:var(--gold);margin-top:1px;font-weight:900;font-variant-numeric:tabular-nums}
 .tx .m em{font-style:normal;color:var(--good);font-weight:800}
 .item.pr .tx .m,.item.tal .tx .m{color:var(--crystal)}
 .tx .d{font-size:.67rem;color:var(--muted);margin-top:1px;line-height:1.25}
@@ -135,13 +136,22 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .buy:disabled .coin,.buy:disabled .gem{filter:saturate(.3) brightness(.75)}
 
 /* Bottom nav */
-.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--surface);border-radius:18px;padding:4px}
-.nav button{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;border-radius:14px;padding:4px 2px 3px;color:var(--muted);font-size:.64rem;font-weight:900}
+.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:var(--surface);border-radius:18px;padding:4px}
+.nav button{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;border-radius:14px;padding:4px 1px 3px;color:var(--muted);font-size:.6rem;font-weight:900;white-space:nowrap}
 .nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-selected="true"]{background:var(--surface-3);color:var(--accent)}
 .nav .dot{position:absolute;top:5px;right:calc(50% - 18px);width:9px;height:9px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 2px var(--surface)}
 
 /* Collection */
+.tag.cnt{background:rgba(255,138,43,.2);color:#ffb27a}
+.rew{font-size:.7rem;color:var(--muted);margin:-2px 4px 6px}
+.rew.ok{color:var(--good)}
+.reg small{display:block;color:var(--muted);font-size:.66rem;font-weight:700;margin-top:1px}
+.tile svg{width:30px;height:30px;display:block;margin:9px auto 13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile.off svg{opacity:.25}
+.tile.btn{cursor:pointer;border:2px solid transparent}
+.tile.btn[aria-pressed="true"]{border-color:var(--accent);color:var(--text)}
+.tile.btn:disabled{cursor:default}
 .col h3{font-family:var(--display);font-weight:700;font-size:1rem;margin:8px 4px 6px;display:flex;justify-content:space-between;letter-spacing:.02em}
 .col h3 span{font-family:var(--body);font-size:.76rem;color:var(--muted)}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px}
@@ -227,9 +237,10 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   </section>
 
   <nav class="nav" role="tablist">
-    <button role="tab" data-tab="ekip" aria-selected="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20c.5-4 3-6 5.5-6s5 2 5.5 6M14 14.5c3 0 6 1.5 6.5 5.5"/></svg>Kazı Ekibi<span class="dot" hidden></span></button>
-    <button role="tab" data-tab="gel" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M12 20V5M5 11l7-7 7 7"/></svg>Geliştirme<span class="dot" hidden></span></button>
-    <button role="tab" data-tab="yet" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4l3 16 3-16"/></svg>Yetenekler<span class="dot" hidden></span></button>
+    <button role="tab" data-tab="ekip" aria-selected="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20c.5-4 3-6 5.5-6s5 2 5.5 6M14 14.5c3 0 6 1.5 6.5 5.5"/></svg>Ekip<span class="dot" hidden></span></button>
+    <button role="tab" data-tab="gel" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M12 20V5M5 11l7-7 7 7"/></svg>Geliştir<span class="dot" hidden></span></button>
+    <button role="tab" data-tab="yet" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4l3 16 3-16"/></svg>Yetenek<span class="dot" hidden></span></button>
+    <button role="tab" data-tab="gor" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4M9 15l2 2 4-4"/></svg>Görevler<span class="dot" hidden></span></button>
     <button role="tab" data-tab="kol" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg>Koleksiyon<span class="dot" hidden></span></button>
   </nav>
 </div>
@@ -241,29 +252,29 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 /* ================= DATA ================= */
 const COLS=5;
 const BIOMES=[
-  {name:'Başlangıç Madeni',from:0,to:100,blocks:['soil','hardsoil'],ores:[['coal',.07],['copper',.05]],
+  {name:'Başlangıç Madeni',mech:'Kömür ve bakır damarları',from:0,to:100,blocks:['soil','hardsoil'],ores:[['coal',.07],['copper',.05]],
    back:'#3b2618',stone:'#4d3222',strata:['#8a5530','#9b6238','#7a4828','#a86d40'],deco:'roots',gauge:'#c98a4b',fog:'16,10,6'},
-  {name:'Taşlık Bölge',dat:'Taşlık Bölge’ye',from:100,to:250,blocks:['rock','hardrock'],ores:[['iron',.07],['silver',.045],['emerald',.014]],
+  {name:'Taşlık Bölge',mech:'Demir, gümüş ve nadir zümrüt',dat:'Taşlık Bölge’ye',from:100,to:250,blocks:['rock','hardrock'],ores:[['iron',.07],['silver',.045],['emerald',.014]],
    back:'#26252c',stone:'#36343d',strata:['#67646f','#75727e','#5a5762','#827e8a'],deco:'stal',gauge:'#9a97a6',fog:'10,10,14'},
-  {name:'Demir Vadisi',dat:'Demir Vadisi’ne',from:250,to:500,blocks:['ironrock','basalt'],ores:[['gold',.065],['ruby',.04],['diamond',.012],['crystal',.005]],
+  {name:'Demir Vadisi',mech:'Altın, yakut ve ilk kristaller',dat:'Demir Vadisi’ne',from:250,to:500,blocks:['ironrock','basalt'],ores:[['gold',.065],['ruby',.04],['diamond',.012],['crystal',.005]],
    back:'#2c1717',stone:'#3f2220',strata:['#7b4036','#8c4c40','#6a372f','#97584a'],deco:'veins',gauge:'#c0574a',fog:'14,6,6'},
-  {name:'Kristal Mağarası',dat:'Kristal Mağarası’na',from:500,to:700,blocks:['amethystrock','crystalrock'],ores:[['amethyst',.06],['diamond',.02],['crystal',.012]],
+  {name:'Kristal Mağarası',mech:'Kristal damarları: kristal madeni 3 kat sık',dat:'Kristal Mağarası’na',from:500,to:700,blocks:['amethystrock','crystalrock'],ores:[['amethyst',.06],['diamond',.02],['crystal',.012]],crystalX:3,
    back:'#211a33',stone:'#2f2547',strata:['#5a4588','#6a52a0','#4c3a76','#7a62b4'],deco:'crystals',decoC:'#c77dff',fog:'12,8,22'},
-  {name:'Mantar Ormanı',dat:'Mantar Ormanı’na',from:700,to:900,blocks:['mossy','mycel'],ores:[['spore',.06],['emerald',.03],['gold',.02]],
+  {name:'Mantar Ormanı',mech:'Zehirli mantarlar kırılınca yanındaki blokları çürütür',dat:'Mantar Ormanı’na',from:700,to:900,blocks:['mossy','mycel'],ores:[['spore',.06],['toxic',.05],['emerald',.03],['gold',.02]],
    back:'#17261f',stone:'#21362b',strata:['#3f6e4c','#4b7d58','#355e41','#5a8c66'],deco:'mushroom',decoC:'#58f0d0',fog:'6,16,12'},
-  {name:'Lav Denizi',dat:'Lav Denizi’ne',from:900,to:1150,blocks:['magma','obsidian'],ores:[['fireopal',.06],['ruby',.04],['gold',.02]],
+  {name:'Lav Denizi',mech:'Isıl kayalar patlama ve ateşten az hasar alır, 3 kat altın verir',dat:'Lav Denizi’ne',from:900,to:1150,blocks:['magma','obsidian'],ores:[['fireopal',.06],['heatrock',.08],['ruby',.04],['gold',.02]],
    back:'#26100c',stone:'#3a1812',strata:['#5c2218','#6e2a1e','#4a1a12','#7c3222'],deco:'veins',fog:'20,6,4'},
-  {name:'Fosil Vadisi',dat:'Fosil Vadisi’ne',from:1150,to:1400,blocks:['sandstone','limestone'],ores:[['fossil',.07],['gold',.04],['diamond',.01]],
+  {name:'Fosil Vadisi',mech:'Fosil parçaları topla: 10 parça bir Dinozor Kafatası eder',dat:'Fosil Vadisi’ne',from:1150,to:1400,blocks:['sandstone','limestone'],ores:[['fossil',.07],['gold',.04],['diamond',.01]],
    back:'#3a2e1e',stone:'#4a3c28',strata:['#a8865a','#b8966a','#977650','#c4a276'],deco:'bones',decoC:'#efe6d2',fog:'18,14,8'},
-  {name:'Kayıp Şehir',dat:'Kayıp Şehir’e',from:1400,to:1700,blocks:['ruinbrick','marble'],ores:[['relic',.06],['gold',.05],['emerald',.02]],
+  {name:'Kayıp Şehir',mech:'Antik sandıklar 3 kat sık, hazine bulma şansı 2 kat',dat:'Kayıp Şehir’e',from:1400,to:1700,blocks:['ruinbrick','marble'],ores:[['relic',.06],['gold',.05],['emerald',.02]],chestX:3,treasureX:2,
    back:'#2a2620',stone:'#3a342b',strata:['#8a7656','#9a8664','#7a684a','#a89470'],deco:'pillars',decoC:'#d8d2c8',fog:'14,12,8'},
-  {name:'Ejderha Hazinesi',dat:'Ejderha Hazinesi’ne',from:1700,to:2000,blocks:['dragonrock','goldrock'],ores:[['dragongold',.07],['ruby',.04],['diamond',.02]],chestX:3,
+  {name:'Ejderha Hazinesi',mech:'Ejder hazinesi: sandıklar 3 kat sık',dat:'Ejderha Hazinesi’ne',from:1700,to:2000,blocks:['dragonrock','goldrock'],ores:[['dragongold',.07],['ruby',.04],['diamond',.02]],chestX:3,
    back:'#2a1016',stone:'#3e1820',strata:['#5a2230','#6a2a3a','#4a1a26','#8a6a2a'],deco:'coins',decoC:'#ffc626',fog:'18,6,8'},
-  {name:'Yeraltı Okyanusu',dat:'Yeraltı Okyanusu’na',from:2000,to:2400,blocks:['seastone','coral'],ores:[['pearl',.06],['emerald',.03],['diamond',.015]],
+  {name:'Yeraltı Okyanusu',mech:'Dalgıç Kaskı olmadan ekip ve dokunuş hasarı yarıya düşer',dat:'Yeraltı Okyanusu’na',from:2000,to:2400,blocks:['seastone','coral'],ores:[['pearl',.06],['emerald',.03],['diamond',.015]],
    back:'#0f2430',stone:'#163446',strata:['#24586e','#2c6680','#1e4a5e','#347490'],deco:'bubbles',decoC:'#9fe6ff',fog:'4,12,20'},
-  {name:'Zaman Koridoru',dat:'Zaman Koridoru’na',from:2400,to:2900,blocks:['timestone','brass'],ores:[['timesand',.06],['crystal',.02],['gold',.03]],
+  {name:'Zaman Koridoru',mech:'Zaman Kumu kırılınca 30 saniyelik üretimi anında verir',dat:'Zaman Koridoru’na',from:2400,to:2900,blocks:['timestone','brass'],ores:[['timesand',.06],['crystal',.02],['gold',.03]],
    back:'#191736',stone:'#25224c',strata:['#36326e','#423d82','#2c285c','#4e4896'],deco:'clocks',decoC:'#ffd46b',fog:'8,8,22'},
-  {name:'Dünyanın Ötesi',dat:'Dünyanın Ötesi’ne',from:2900,to:Infinity,blocks:['void','nebula'],ores:[['cosmic',.06],['diamond',.03],['crystal',.02]],
+  {name:'Dünyanın Ötesi',mech:'Kozmik Enerji kırılınca kristal verir',dat:'Dünyanın Ötesi’ne',from:2900,to:Infinity,blocks:['void','nebula'],ores:[['cosmic',.06],['diamond',.03],['crystal',.02]],
    back:'#0c0a18',stone:'#161228',strata:['#1c1830','#2a2048','#140f26','#3a2a5a'],deco:'stars',decoC:'#ffffff',fog:'4,2,12'},
 ];
 const FUTURE=[];
@@ -305,12 +316,15 @@ const BLOCKS={
   amethyst:{name:'Ametist',hp:2.4,gold:12,host:'amethystrock',ore:'#c77dff',hi:'#f0d9ff',gem:1,mineral:1},
   spore:{name:'Işıl Mantar',hp:2.2,gold:12,host:'mossy',ore:'#58f0d0',hi:'#e0fff8',mineral:1,shape:'mush'},
   fireopal:{name:'Ateş Opali',hp:2.6,gold:14,host:'obsidian',ore:'#ff7a1a',hi:'#ffe08a',gem:1,mineral:1},
-  fossil:{name:'Fosil',hp:2.4,gold:13,host:'limestone',ore:'#f3ead6',hi:'#ffffff',mineral:1,shape:'shell'},
+  fossil:{fos:1,name:'Fosil',hp:2.4,gold:13,host:'limestone',ore:'#f3ead6',hi:'#ffffff',mineral:1,shape:'shell'},
   relic:{name:'Antik Kalıntı',hp:2.8,gold:16,host:'ruinbrick',ore:'#3fb7a8',hi:'#c8fff4',mineral:1,shape:'relic'},
   dragongold:{name:'Ejder Altını',hp:3,gold:18,host:'dragonrock',ore:'#ffb21a',hi:'#fff2b0',mineral:1},
   pearl:{name:'İnci',hp:2.6,gold:16,host:'seastone',ore:'#f4f0ff',hi:'#ffffff',mineral:1,shape:'pearl'},
-  timesand:{name:'Zaman Kumu',hp:3,gold:18,host:'timestone',ore:'#ffd46b',hi:'#fff6d0',mineral:1},
-  cosmic:{name:'Kozmik Enerji',hp:3.2,gold:22,host:'void',ore:'#7af0ff',hi:'#ffffff',gem:1,mineral:1},
+  timesand:{name:'Zaman Kumu',hp:3,gold:18,host:'timestone',ore:'#ffd46b',hi:'#fff6d0',mineral:1,timeX:1},
+  cosmic:{name:'Kozmik Enerji',hp:3.2,gold:22,host:'void',ore:'#7af0ff',hi:'#ffffff',gem:1,mineral:1,crystal:1},
+  // biome mechanic blocks (not collectible minerals)
+  toxic:{name:'Zehirli Mantar',hp:2,gold:4,host:'mossy',ore:'#b04ce0',hi:'#f3c2ff',shape:'mush',toxic:1},
+  heatrock:{name:'Isıl Kaya',hp:2.2,gold:6,host:'obsidian',ore:'#ff5a1a',hi:'#ffd08a',heat:1},
 };
 const MINERALS=['coal','copper','iron','silver','emerald','gold','ruby','diamond','crystal','chest','amethyst','spore','fireopal','fossil','relic','dragongold','pearl','timesand','cosmic'];
 const WORKERS=[
@@ -328,7 +342,6 @@ const WORKERS=[
   {id:'ufo',name:'UFO',tag:'Çekim ışınıyla söker',cost:1.2e49,dps:6e9,period:1,scale:.86,draw:'ufo',machine:1,unlock:1400,tint:'#1f3340',hit:'#9dffcf'},
   {id:'karadelik',name:'Kara Delik Makinesi',tag:'Bütün sırayı içine çeker',cost:3e54,dps:6e10,period:3,scale:.9,draw:'bh',machine:1,area:1,unlock:1700,tint:'#2a2240',pcol:'#b48cff'},
 ];
-const PLAYER_LOOK={helmet:'#ffd23f',shirt:'#ff8a2b',pants:'#2a5cab',skin:'#f6c7a0',tool:'pick',overall:1};
 const TIER_NAMES=[['Çelik Kazma','Elmas Uçlu Kazma'],['Kemik Ödülü','Çelik Tırnaklar'],['Ağır Balyoz','Usta İşi Teknik'],['Keskin Pençe','Toprak Sezgisi'],['Uzun Fitil','Çifte Paket'],['Hidrolik Kol','Turbo Motor'],
   ['Elmas Matkap Ucu','Turbo Delici'],['Yapay Zekâ Çipi','Titanyum Gövde'],['Kristal Yumruk','Kadim Çekirdek'],['Ejder Nefesi','Kızıl Pullar'],['Çekim Işını','Işınlanma Motoru'],['Olay Ufku','Tekillik Çekirdeği']];
 // ×2 tiers never run out: 10, 25, then every 50 hires
@@ -351,6 +364,7 @@ const SPECIALS=[
   {id:'sandik',name:'Hazine Haritası',icon:'map',ic:'c-gold',desc:'Sandık bulma ihtimali ×2',cost:300000},
   {id:'zincir',name:'Patlama Zinciri',icon:'flame',ic:'c-red',desc:'Dinamitçi hasarı ×2',cost:2e6,req:()=>S.own[4]>0,reqText:'1 Dinamitçi gerekli'},
   {id:'eller',name:'Usta Eller',icon:'pick',ic:'c-acc',desc:'Dokunuşa ekip hasarının %5’i daha eklenir',cost:5e6},
+  {id:'dalgic',name:'Dalgıç Kaskı',icon:'helmet',ic:'c-cry',desc:'Yeraltı Okyanusu’nda tam hasarla kazarsın',cost:()=>hpAt(2000)*goldPerHp(2000)*60,hide:()=>S.stats.bestDepth<1900},
 ];
 const TALENTS=[
   {id:'bilek',name:'Güçlü Bilek',icon:'pick',per:'Dokunma hasarı +%25',base:1},
@@ -361,6 +375,29 @@ const TALENTS=[
   {id:'kristal',name:'Kristal Uzmanı',icon:'gem',per:'Sefer kristali +%10',base:3},
   {id:'sermaye',name:'Hazır Sermaye',icon:'coin',per:'Sefere cebinde altınla başla',base:2,max:8},
   {id:'vardiya',name:'Uyumayan Maden',icon:'moon',per:'Çevrimdışı verim +%10',base:2,max:5},
+];
+// one treasure per region, found in that region's chests (Fosil Vadisi: assembled from 10 fossil pieces)
+const TREASURES=[
+  {id:'fener',name:'Eski Madenci Feneri',icon:'lamp',c:'#ffcb3d'},{id:'pusula',name:'Bakır Pusula',icon:'search',c:'#f07d34'},
+  {id:'migfer',name:'Demir Miğfer',icon:'helmet',c:'#c9cfd8'},{id:'tac',name:'Ametist Taç',icon:'crown',c:'#c77dff'},
+  {id:'kavanoz',name:'Işıl Spor Kavanozu',icon:'jar',c:'#58f0d0'},{id:'hancer',name:'Obsidyen Hançer',icon:'dagger',c:'#ff7a1a'},
+  {id:'kafatasi',name:'Dinozor Kafatası',icon:'skull',c:'#f3ead6'},{id:'maske',name:'Antik Altın Maske',icon:'mask',c:'#ffcb3d'},
+  {id:'yumurta',name:'Ejder Yumurtası',icon:'egg',c:'#ff5a6a'},{id:'harita',name:'Kayıp Deniz Haritası',icon:'map',c:'#9fe6ff'},
+  {id:'kumsaati',name:'Kadim Kum Saati',icon:'hourglass',c:'#ffd46b'},{id:'yildiz',name:'Yıldız Parçası',icon:'star',c:'#7af0ff'},
+];
+const COSTUMES=[
+  {id:'klasik',name:'Klasik',req:null,look:{helmet:'#ffd23f',shirt:'#ff8a2b',pants:'#2a5cab',skin:'#f6c7a0',tool:'pick',overall:1}},
+  {id:'kristal',name:'Kristal Kask',req:'maden',look:{helmet:'#b48cff',shirt:'#7a4fe0',pants:'#2a2050',skin:'#f6c7a0',tool:'pick',overall:1}},
+  {id:'altin',name:'Altın Kask',req:'hazine',look:{helmet:'#ffd84a',shirt:'#e0a21a',pants:'#5a3a10',skin:'#f6c7a0',tool:'pick',overall:1}},
+];
+const QUESTS=[
+  {id:'blok',stat:'blocks',n:[150,300,600],t:n=>`${n} blok kır`},
+  {id:'dokun',stat:'taps',n:[300,600,1000],t:n=>`${n} kez dokun`},
+  {id:'kritik',stat:'crits',n:[50,100,200],t:n=>`${n} kritik vuruş yap`},
+  {id:'metre',stat:'meters',n:[25,50,100],t:n=>`${n} metre in`},
+  {id:'isci',stat:'hires',n:[20,50,100],t:n=>`${n} çalışan işe al`},
+  {id:'sandik',stat:'chests',n:[1,3,5],t:n=>`${n} hazine sandığı aç`},
+  {id:'ruzgar',stat:'boosts',n:[1,2,3],t:n=>`Altın Rüzgarı’nı ${n} kez kullan`},
 ];
 const ACH=[
   {id:'ilk',name:'İlk Kazma',desc:'İlk bloğu kır',t:()=>S.stats.blocks>=1},
@@ -393,6 +430,16 @@ const ICONS={
   flame:'<path d="M12 3c1 4 6 6 6 11a6 6 0 01-12 0c0-3 2-4 2-7 2 1 3 3 3 5 1-2 1-6 1-9z"/>',
   paw:'<circle cx="7" cy="9" r="1.8"/><circle cx="11" cy="6" r="1.8"/><circle cx="15.5" cy="7" r="1.8"/><circle cx="18" cy="11" r="1.8"/><path d="M8 18c0-3 2.5-5.5 5-5.5s4 2 4 4-2 3-4.5 2.5S8 20.5 8 18z"/>',
   gem:'<path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4l3 16 3-16"/>',
+  crown:'<path d="M3 18h18l-2-10-5 4-2-6-2 6-5-4z"/>',
+  skull:'<path d="M12 3a8 8 0 00-8 8c0 3 2 4.5 3 5v3h10v-3c1-.5 3-2 3-5a8 8 0 00-8-8z"/><circle cx="9" cy="11" r="1.6"/><circle cx="15" cy="11" r="1.6"/>',
+  egg:'<path d="M12 3c-4 0-7 6-7 10a7 7 0 0014 0c0-4-3-10-7-10z"/><path d="M8 13l2 2 2-2 2 2 2-2"/>',
+  hourglass:'<path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9"/>',
+  mask:'<path d="M4 6c5-2 11-2 16 0 0 7-3 12-8 14C7 18 4 13 4 6z"/><path d="M8 10h2M14 10h2M10 15c1 .7 3 .7 4 0"/>',
+  lamp:'<path d="M9 3h6l1 4H8z"/><rect x="7" y="7" width="10" height="11" rx="3"/><path d="M10 21h4"/>',
+  helmet:'<path d="M4 15a8 8 0 0116 0z"/><path d="M2 15h20v3H2z"/>',
+  jar:'<rect x="6" y="7" width="12" height="14" rx="3"/><path d="M8 3h8v4H8z"/><circle cx="12" cy="14" r="2.5"/>',
+  dagger:'<path d="M12 2l2 10h-4z"/><path d="M8 12h8M12 12v7"/><circle cx="12" cy="21" r="1.5"/>',
+  cal:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
 };
 
 /* ================= HELPERS ================= */
@@ -401,16 +448,19 @@ const now=()=>Date.now();
 const clamp=(v,a,b)=>v<a?a:v>b?b:v;
 const lerp=(a,b,t)=>a+(b-a)*t;
 const easeOut=t=>1-(1-t)*(1-t), easeIn=t=>t*t*t;
-const SUF=['','Bin','Mn','Mr','Tn','Ktr','Knt','Sks','Spt','Okt','Non','Des'];
+const SUF=['','B','Mn','Mr','Tn','Ktr','Knt','Sks','Spt','Okt','Non','Des'];
+const SUP='⁰¹²³⁴⁵⁶⁷⁸⁹';
 function fmt(n){
   if(!isFinite(n)) return '∞';
   if(n<0) return '-'+fmt(-n);
   if(n<10 && n%1>0.05) return n.toFixed(1).replace('.',',');
   if(n<1e4) return Math.floor(n).toLocaleString('tr-TR');
-  const e=Math.floor(Math.log10(n)/3);
-  if(e>=SUF.length) return n.toExponential(2).replace('e+','e').replace('.',',');
-  const v=n/Math.pow(10,3*e);
-  return (v<10?v.toFixed(2):v<100?v.toFixed(1):Math.floor(v).toString()).replace('.',',')+' '+SUF[e];
+  if(S&&S.numFmt==='sci'&&n>=1e6){const e=Math.floor(Math.log10(n));return (n/Math.pow(10,e)).toFixed(2).replace('.',',')+'·10'+String(e).split('').map(d=>SUP[d]).join('');}
+  const e=Math.floor(Math.log10(n)/3),v=n/Math.pow(10,3*e);
+  const num=(v<10?v.toFixed(2):v<100?v.toFixed(1):Math.floor(v).toString()).replace('.',',');
+  if(e<SUF.length) return num+' '+SUF[e];
+  const k=e-SUF.length; // after Desilyon: aa, ab, … az, ba, …
+  return num+' '+String.fromCharCode(97+Math.floor(k/26)%26)+String.fromCharCode(97+k%26);
 }
 const dec=v=>String(Math.round(v*10)/10).replace('.',',');
 function dur(s){s=Math.floor(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return h?`${h} sa ${m} dk`:m?`${m} dk`:`${s} sn`;}
@@ -422,7 +472,8 @@ const svg=name=>`<svg viewBox="0 0 24 24">${ICONS[name]||ICONS.gem}</svg>`;
 /* ================= STATE ================= */
 const SAVE_KEY='yerinalti-v1';
 function fresh(){return{v:1,gold:0,crystals:0,depth:0,runMax:0,own:WORKERS.map(()=>0),tiers:WORKERS.map(()=>0),lv:{},one:{},tal:{},ach:{},found:{},
-  stats:{blocks:0,taps:0,crits:0,chests:0,goldAll:0,runs:0,bestDepth:0},row:null,seed:(Math.random()*1e9)|0,last:now(),boostEnd:0,boostReady:0,sound:true,buyMult:1,tab:'ekip'};}
+  stats:{blocks:0,taps:0,crits:0,chests:0,goldAll:0,runs:0,bestDepth:0,meters:0,hires:0,boosts:0},row:null,seed:(Math.random()*1e9)|0,last:now(),boostEnd:0,boostReady:0,sound:true,buyMult:1,tab:'ekip',
+  hz:{},fos:0,costume:'klasik',numFmt:'std',daily:null};}
 let S=null;
 function load(){try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return null;const d=JSON.parse(raw);if(!d||d.v!==1)return null;return Object.assign(fresh(),d);}catch(e){return null;}}
 function serial(){const o=Object.assign({},S);o.row=S.row&&{r:S.row.r,cells:S.row.cells.map(c=>c&&{t:c.t,hp:c.hp,max:c.max})};return o;}
@@ -438,15 +489,18 @@ function workerDps(i,nb,count){
   if(w.animal) m*=1+.4*tal('hayvan');
   if(w.machine) m*=1+.4*tal('makine');
   if(i===4&&has('zincir')) m*=2;
-  return m*BM(nb)*crysMult();
+  return m*BM(nb)*crysMult()*(COL.ekip?1.15:1)*diveMult();
 }
 function teamDps(nb){let s=0;for(let i=0;i<WORKERS.length;i++)s+=workerDps(i,nb);return s;}
 const crysMult=()=>1+.05*S.crystals; // every unspent crystal: +5% damage and gold
-function tapDmg(){return (tapBase(lv('kazma'))*(1+.25*tal('bilek'))*crysMult()+teamDps(true)*((has('sezgi')?.02:0)+(has('eller')?.05:0)))*BM();}
+// collection completion rewards, refreshed in the UI tick
+const COL={ekip:false,bolge:false,maden:false,hazine:false};
+const diveMult=()=>S.depth>=2000&&S.depth<2400&&!has('dalgic')?.5:1;
+function tapDmg(){return (tapBase(lv('kazma'))*(1+.25*tal('bilek'))*crysMult()*(COL.maden?1.25:1)+teamDps(true)*((has('sezgi')?.02:0)+(has('eller')?.05:0)))*BM()*diveMult();}
 const critChance=()=>Math.min(.5,.04+.03*lv('krit'));
 const critMult=()=>3+.5*lv('kritg');
 const achCount=()=>Object.keys(S.ach).length;
-function goldMult(nb){return (1+.15*lv('altin'))*(1+.2*tal('sezgi'))*(1+.03*achCount())*crysMult()*BM(nb);}
+function goldMult(nb){return (1+.15*lv('altin'))*(1+.2*tal('sezgi'))*(1+.03*achCount())*crysMult()*(COL.bolge?1.15:1)*BM(nb);}
 // per-metre growth of block HP and gold-per-HP; unchanged up to 300 m, gentler HP and richer gold below
 const GROW=[[300,Math.log(1.042),Math.log(1.0035)],[1000,.015,.06],[3000,.007,.028],[Infinity,.0045,.018]];
 function lnGrow(d,j){let s=0,prev=0;for(const sg of GROW){const a=Math.min(d,sg[0])-prev;if(a<=0)break;s+=a*sg[j];prev=sg[0];}return s;}
@@ -456,7 +510,7 @@ function goldRate(nb){return teamDps(nb)*goldPerHp(S.depth)*goldMult(nb)*1.1;}
 function biomeIdx(r){for(let i=BIOMES.length-1;i>0;i--)if(r>=BIOMES[i].from)return i;return 0;}
 const offlineCap=()=>(2+lv('depo'))*3600;
 const offlineEff=()=>.5+.1*tal('vardiya');
-function crystalsFor(){const d=S.runMax;if(d<100)return 0;return Math.floor(Math.pow(d/25,1.5)*(1+.1*tal('kristal')));}
+function crystalsFor(){const d=S.runMax;if(d<100)return 0;return Math.floor(Math.pow(d/25,1.5)*(1+.1*tal('kristal'))*(COL.hazine?1.15:1));}
 const startGold=()=>tal('sermaye')?100*Math.pow(6,tal('sermaye')-1):0;
 const talCost=t=>Math.ceil(t.base*Math.pow(1.5,tal(t.id)));
 
@@ -472,7 +526,7 @@ function rowTypes(r){
     if(r>2){
       const cp=.007*(has('sandik')?2:1)*(b.chestX||1);
       if(u<cp) type='chest';
-      else{let acc=cp;const om=has('dedektor')?2:1;for(const [id,p] of b.ores){acc+=p*om;if(u<acc){type=id;break;}}}
+      else{let acc=cp;const om=has('dedektor')?2:1;for(const [id,p] of b.ores){acc+=p*om*(id==='crystal'?(b.crystalX||1):1);if(u<acc){type=id;break;}}}
     }
     if(!type) type=r===0?b.blocks[0]:(u2<.25+.45*t?b.blocks[1]:b.blocks[0]);
     a.push(type);
@@ -917,9 +971,12 @@ function hireDrop(i,n,before){
   floatText(clamp(sp.x,B*1.5,W-B*1.5),camY+B*.9,`+${n} ${WORKERS[i].name}`,'#7fe0a0',15,{max:1.3,vy:20});
 }
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+// visual density: 0 early (every number), 1 mid (merged gold, fewer hit numbers), 2 late (totals only, lighter effects)
+let DENS=0,goldAgg=0,goldAggT=0;
+const density=()=>{const c=totalOwn();return c<60?0:c<300?1:2;};
 function spawnParts(x,y,n,color,o){
-  o=o||{};const lim=reduced()?Math.ceil(n/3):n;
-  for(let k=0;k<lim&&parts.length<260;k++){
+  o=o||{};const lim=reduced()?Math.ceil(n/3):DENS===2?Math.ceil(n/2):n,cap=DENS===2?140:260;
+  for(let k=0;k<lim&&parts.length<cap;k++){
     const a=o.ang!=null?o.ang+(Math.random()-.5)*.8:o.up?(-Math.PI/2+(Math.random()-.5)*2.2):Math.random()*Math.PI*2,sp=(o.speed||1)*(80+Math.random()*180)*(B/60);
     parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-(o.up?60:0),life:0,max:o.life||(.5+Math.random()*.4),c:color,s:(o.size||1)*(2+Math.random()*4)*(B/60),k:o.kind||'deb',g:o.g==null?800:o.g,rot:Math.random()*6,vr:(Math.random()-.5)*14});
   }
@@ -942,7 +999,7 @@ function hit(ci,dmg,src){
 function breakBlock(ci){
   const r=S.row.r,cell=S.row.cells[ci],T=BLOCKS[cell.t],{x,y}=blockCenter(ci);
   S.row.cells[ci]=null;S.stats.blocks++;
-  const host=BLOCKS[hostFor(cell.t,r)];
+  const host=BLOCKS[hostFor(cell.t,r)],bi=biomeIdx(r);
   let goldV=hpAt(r)*T.gold*goldPerHp(r)*goldMult();
   if(T.chest){
     goldV=Math.max(goldRate()*30,hpAt(r)*goldPerHp(r)*goldMult()*25);S.stats.chests++;
@@ -951,16 +1008,26 @@ function breakBlock(ci){
     toast('Hazine sandığı!',`${fmt(goldV)} altın${cr?` ve ${cr} kristal`:''} buldun.`);SFX.chest();
     spawnParts(x,y,16,'#ffcb3d',{kind:'spark',up:1,g:200});
   }
+  if(T.chest){const tr=TREASURES[bi];if(tr&&bi!==6&&!S.hz[tr.id]&&Math.random()<.3*(BIOMES[bi].treasureX||1)){S.hz[tr.id]=1;toast('Hazine bulundu!',`${tr.name} koleksiyona eklendi.`);SFX.ach();}}
   if(T.crystal){S.crystals+=1;floatText(x,y-B*.5,'+1 kristal','#c9aaff',20,{max:1.4});}
+  if(T.fos&&!S.hz.kafatasi&&Math.random()<.35){S.fos=(S.fos||0)+1;floatText(x,y-B*.5,`Fosil parçası ${Math.min(S.fos,10)}/10`,'#f3ead6',17,{max:1.4});
+    if(S.fos>=10){S.hz.kafatasi=1;toast('Hazine bulundu!','Dinozor Kafatası tamamlandı.');SFX.ach();}}
+  if(T.timeX){const v=goldRate()*30;addGold(v);floatText(x,y-B*.5,'+30 sn üretim','#ffd46b',18,{max:1.4});}
+  if(T.toxic){
+    // poison spreads into the neighbouring blocks of the same row
+    spawnParts(x,y,14,'#c77dff',{kind:'smoke',speed:.6,g:-30,size:2.2,life:.9});
+    for(const n of [ci-1,ci+1]){if(S.row.r===r&&S.row.cells[n]){const nc=S.row.cells[n];floatText(colX(n),y-B*.2,'Çürüdü!','#e0a8ff',14,{max:.8});hit(n,nc.max*.4,'w');}}
+  }
   if(T.mineral&&!S.found[cell.t]){S.found[cell.t]=1;toast('Yeni keşif!',`${T.name} koleksiyona eklendi.`,T.crystal);}
   addGold(goldV);
-  if(floats.length<14||T.ore||T.chest) floatText(x,y,'+'+fmt(goldV),'#ffd84a',T.ore||T.chest?24:19,{coin:1,max:1.1});
+  if(DENS===0||T.chest||(DENS===1&&T.ore)){if(floats.length<14||T.ore||T.chest)floatText(x,y,'+'+fmt(goldV),'#ffd84a',T.ore||T.chest?24:19,{coin:1,max:1.1});}
+  else goldAgg+=goldV;
   spawnParts(x,y,8,host.base,{kind:'chunk',speed:1.1,size:1.6});
   spawnParts(x,y,8,host.dark,{speed:1});
   spawnParts(x,y+B*.2,5,'rgba(220,190,160,.45)',{kind:'smoke',speed:.35,g:-40,size:3,life:.8});
   parts.push({x,y,life:0,max:.3,k:'ring',c:'#fff',s:B*.5,vx:0,vy:0,g:0});
   if(T.ore) spawnParts(x,y,8,T.ore,{kind:'spark',up:1,size:1.3,g:500});
-  const nc=Math.min(7,3+Math.round(Math.log10(1+(T.gold||1))*4));
+  const nc=DENS===2?2:Math.min(7,3+Math.round(Math.log10(1+(T.gold||1))*4));
   const sy=y-camY;
   for(let k=0;k<nc&&flies.length<40;k++) flies.push({x0:x,y0:sy,cx:x+(Math.random()-.5)*B*2,cy:sy-B*(1+Math.random()),t:-k*.04,dur:.55+Math.random()*.2});
   shake=Math.max(shake,1.8);
@@ -971,12 +1038,12 @@ function breakBlock(ci){
   if(S.row.cells.every(c=>!c)) advance();
 }
 function advance(){
-  S.depth++;S.runMax=Math.max(S.runMax,S.depth);
+  S.depth++;S.runMax=Math.max(S.runMax,S.depth);S.stats.meters++;
   const was=S.stats.bestDepth;S.stats.bestDepth=Math.max(S.stats.bestDepth,S.depth);
   const b=BIOMES[biomeIdx(S.depth)];
   if(S.depth===b.from&&S.depth>0){
     regionFx.t=0;SFX.region();
-    setTimeout(()=>banner(was<S.depth?'Yeni bölge açıldı':'Bölge',b.name),350);
+    setTimeout(()=>banner(was<S.depth?'Yeni bölge açıldı':'Bölge',b.name,b.mech),350);
     for(let k=0;k<26;k++)spawnParts(SX+Math.random()*SW,camY+Math.random()*H*.3,1,BLOCKS[b.blocks[0]].base,{kind:'chunk',speed:.2,g:900,size:1.2,life:1.2});
   }
   makeFront();
@@ -1008,26 +1075,28 @@ function workerHit(sp,ci){
   if(w.draw==='golem') shake=Math.max(shake,3);
   if(w.draw==='dog') spawnParts(sp.x-sp.facing*u*.25,top,3,host.base,{ang:sp.facing>0?-2.4:-.75,speed:.8,kind:'chunk',size:.7});
   else if(w.draw==='mole') spawnParts(sp.x,top,7,host.base,{up:1,speed:.9,kind:'chunk',size:.8});
+  else if(w.draw==='ufo') spawnParts(x,top,6,host.base,{ang:-Math.PI/2,speed:.35,g:-420,kind:'chunk',size:.8,life:.8});
   else spawnParts(x+(Math.random()-.5)*B*.5,top+B*.1,w.draw==='exc'?9:4,host.spk,{up:1,speed:.75,kind:'chunk',size:.8});
   if(w.draw==='exc') shake=Math.max(shake,2.5);
-  if(floats.length<8&&dmg>=1&&rl('wfloat',140)) floatText(x+(Math.random()-.5)*B*.5,top+B*.25,fmt(dmg),'rgba(255,245,230,.8)',14,{max:.7,vy:40});
+  if(DENS<2&&(DENS===0||w.draw==='golem'||w.draw==='exc')&&floats.length<8&&dmg>=1&&rl('wfloat',DENS?450:140)) floatText(x+(Math.random()-.5)*B*.5,top+B*.25,fmt(dmg),'rgba(255,245,230,.8)',14,{max:.7,vy:40});
   SFX.hit();
   hit(ci,dmg,'w');
 }
 function explode(pj){
   const row=S.row,al=aliveIdx();
   spawnParts(pj.tx,pj.ty,20,pj.col||'#ffb13a',{kind:'spark',speed:1.5,g:150});
-  spawnParts(pj.tx,pj.ty,10,'rgba(90,80,75,.8)',{kind:'smoke',speed:.6,g:-60,size:3,life:1});
+  spawnParts(pj.tx,pj.ty,DENS?4:10,DENS?'rgba(90,80,75,.4)':'rgba(90,80,75,.8)',{kind:'smoke',speed:.6,g:-60,size:DENS?2:3,life:DENS?.6:1});
   parts.push({x:pj.tx,y:pj.ty,life:0,max:.35,k:'ring',c:pj.kind==='bh'?'#d8c2ff':'#ffd27a',s:B*1.4,vx:0,vy:0,g:0});
   shake=Math.max(shake,7);SFX.boom();
   if(!al.length)return;
   const each=pj.dmg/Math.sqrt(al.length);
-  for(const ci of al){if(S.row!==row)break;if(row.cells[ci])hit(ci,each,'w');}
+  for(const ci of al){if(S.row!==row)break;const c=row.cells[ci];if(c)hit(ci,BLOCKS[c.t].heat?each*.3:each,'w');}
 }
 
 /* ================= UPDATE ================= */
 function update(dt){
-  time+=dt;
+  time+=dt;DENS=density();
+  goldAggT+=dt;if(goldAgg>0&&goldAggT>(DENS===2?1:.7)){floatText(SX+SW/2,(S.row.r+.1)*B,'+'+fmt(goldAgg),'#ffd84a',DENS===2?28:24,{coin:1,max:1.3,vy:45});goldAgg=0;goldAggT=0;}
   const camT=S.depth*B-frontY();
   if(regionFx.t>=0){
     // new region: camera starts high and glides down into the new layer
@@ -1054,6 +1123,8 @@ function update(dt){
     else if(sp.y>ground){sp.y=Math.max(ground,sp.y-B*4*dt);sp.vy=0;}
     spring(sp,dt);
     const per=w.period*sp.pj,p0=sp.t/per;sp.t+=dt;
+    // mole: dives in one block and pops out of another
+    if(w.draw==='mole'){const pn=sp.t/per;if(pn<.6)sp.moved=0;else if(pn>.76&&!sp.moved){const al=aliveIdx();if(al.length){const nc=al[Math.floor(Math.random()*al.length)];sp.home=nc;sp.x=SX+(nc+.5+sp.off)*B;}sp.moved=1;}}
     if(w.draw==='mole'&&p0<.6&&sp.t/per>=.6&&ci>=0&&S.row.cells[ci])spawnParts(sp.x,S.row.r*B,5,BLOCKS[hostFor(S.row.cells[ci].t,S.row.r)].base,{up:1,speed:.6,kind:'chunk',size:.7});
     if(sp.t>=per){sp.t-=per;if(ci>=0&&S.row.cells[ci])workerHit(sp,ci);}
   }
@@ -1192,7 +1263,7 @@ function drawPlayer(cy){
   g.fillStyle='rgba(0,0,0,.4)';ell(g,x,y,u*.34,u*.07);g.fill();
   const sq=clamp(player.sq||0,-.5,.5),breath=st>.35?Math.sin(time*2.2)*.015:0;
   g.save();g.translate(x,y);g.scale(player.facing*(1-sq*.2-breath),1+sq*.2+breath);
-  drawHuman(g,u,0,PLAYER_LOOK,0,ang);g.restore();
+  drawHuman(g,u,0,(COSTUMES.find(c=>c.id===S.costume)||COSTUMES[0]).look,0,ang);g.restore();
   if(S.stats.blocks<3&&S.stats.runs===0){
     g.font=`${Math.round(clamp(B*.17,10,14))}px Nunito,sans-serif`;g.textAlign='center';g.textBaseline='middle';
     const ly=y-u*1.18;rr(g,x-B*.2,ly-B*.11,B*.4,B*.22,B*.11);g.fillStyle='rgba(255,138,43,.95)';g.fill();g.fillStyle='#fff';g.fillText('SEN',x,ly+.5);
@@ -1365,6 +1436,12 @@ function render(){
   drawParticles(cy);drawSwings(cy);drawFloats(cy);
   drawHint(cy);drawCombo(cy);
   g.restore();
+  if(DENS===2){
+    // late game: one total instead of hundreds of hit numbers
+    const t=`TOPLAM HASAR  ${fmt(teamDps())}/sn`;g.font=`700 ${Math.round(clamp(B*.2,11,15))}px Fredoka,"Trebuchet MS",sans-serif`;
+    const tw=g.measureText(t).width+24,y=H-20;rr(g,W/2-tw/2,y-12,tw,24,12);g.fillStyle='rgba(14,15,20,.82)';g.fill();
+    g.fillStyle='#ffcb3d';g.textAlign='center';g.textBaseline='middle';g.fillText(t,W/2,y+1);
+  }
   if(regionFx.t>=0){const t=regionFx.t,a=t<.25?t/.25*.8:Math.max(0,.8*(1-(t-.25)/1.2));if(a>0){g.fillStyle=`rgba(0,0,0,${a})`;g.fillRect(0,0,W,H);}}
   if(boostOn()){g.fillStyle=`rgba(255,200,60,${.06+.04*Math.sin(time*5)})`;g.fillRect(0,0,W,H);}
 }
@@ -1377,9 +1454,9 @@ function toast(title,sub,cry){
   while(toastsEl.children.length>2) toastsEl.firstChild.remove();
   setTimeout(()=>{d.classList.add('out');setTimeout(()=>d.remove(),320);},2600);
 }
-function banner(small,name){
+function banner(small,name,sub){
   const host=$('bannerHost');host.innerHTML='';const d=document.createElement('div');d.className='banner';
-  d.innerHTML='<small></small><b></b>';d.firstChild.textContent=small;d.lastChild.textContent=name;host.appendChild(d);
+  d.innerHTML='<small></small><b></b><em></em>';d.children[0].textContent=small;d.children[1].textContent=name;d.children[2].textContent=sub||'';d.children[2].hidden=!sub;host.appendChild(d);
   setTimeout(()=>d.remove(),2700);
 }
 function updateHud(){
@@ -1415,11 +1492,11 @@ function buildItems(tab){
         out.push({key:'wl'+i,locked:1,ic:portraitIc(i,1),t:'Kilitli ekip',g:w.unlock?`${w.unlock} m`:'',m:'',d:need.join(' ve ')+' · açılır',nobtn:1});}return;}
       const q=buyQuote(i),own=S.own[i],t=S.tiers[i],gain=workerDps(i,false,own+q.n)-workerDps(i);
       const req=tierReq(t);
-      out.push({key:'w'+i,ic:portraitIc(i),t:w.name,g:own?`${own} adet`:'Yeni',
-        m:`${fmt(workerDps(i))}/sn hasar`,em:`+${fmt(gain)}/sn`,
-        d:w.tag+` · ×2 için ${Math.min(own,req)}/${req}`,bar:Math.min(1,own/req),
+      out.push({key:'w'+i,ic:portraitIc(i),t:w.name,g:own?`${own} adet`:'Yeni',gcls:'cnt',
+        m:`${fmt(workerDps(i))} hasar/sn`,em:`+${fmt(gain)}/sn`,
+        d:own?`Kademe ${t} · sonraki ×2: ${Math.min(own,req)}/${req}`:`${w.tag} · ×2 için 0/${req}`,bar:Math.min(1,own/req),
         b:'İşe al'+(q.n>1?' ×'+q.n:''),c:fmt(q.cost),cur:'gold',can:S.gold>=q.cost,pulse:i===0&&own===0&&S.gold>=q.cost,
-        act:()=>{if(S.gold<q.cost)return false;S.gold-=q.cost;const before=sprites.filter(s=>s.i===i).length;S.own[i]+=q.n;syncSprites();hireDrop(i,q.n,before);return true;}});
+        act:()=>{if(S.gold<q.cost)return false;S.gold-=q.cost;const before=sprites.filter(s=>s.i===i).length;S.own[i]+=q.n;S.stats.hires+=q.n;syncSprites();hireDrop(i,q.n,before);return true;}});
     });
   }else if(tab==='gel'){
     for(const u of LEVELED){
@@ -1436,11 +1513,23 @@ function buildItems(tab){
         act:()=>{if(!ok||S.gold<c)return false;S.gold-=c;S.tiers[i]++;return true;}});
     });
     for(const sp of SPECIALS){
-      if(has(sp.id))continue;const ok=!sp.req||sp.req();
-      once.push({key:'s'+sp.id,ic:{html:svg(sp.icon),cls:sp.ic},t:sp.name,g:'Tek sefer',m:sp.desc,d:ok?'':sp.reqText,b:'Al',c:fmt(sp.cost),cur:'gold',can:ok&&S.gold>=sp.cost,cost:sp.cost,locked:!ok,
-        act:()=>{if(!ok||S.gold<sp.cost)return false;S.gold-=sp.cost;S.one[sp.id]=1;if(sp.id==='dedektor'||sp.id==='sandik')rowCache.clear();return true;}});
+      if(has(sp.id)||(sp.hide&&sp.hide()))continue;const ok=!sp.req||sp.req(),sc=typeof sp.cost==='function'?sp.cost():sp.cost;
+      once.push({key:'s'+sp.id,ic:{html:svg(sp.icon),cls:sp.ic},t:sp.name,g:'Tek sefer',m:sp.desc,d:ok?'':sp.reqText,b:'Al',c:fmt(sc),cur:'gold',can:ok&&S.gold>=sc,cost:sc,locked:!ok,
+        act:()=>{if(!ok||S.gold<sc)return false;S.gold-=sc;S.one[sp.id]=1;if(sp.id==='dedektor'||sp.id==='sandik')rowCache.clear();return true;}});
     }
     once.sort((a,b)=>a.cost-b.cost);out.push(...once);
+  }else if(tab==='gor'){
+    const D=S.daily,k=D.streak,lg=rewardGold(10*k),lc=LOGIN_CRY[k-1];
+    out.push({key:'login',cls:'pr',ic:{html:svg('cal'),cls:'c-gold'},t:`Günlük ödül · ${k}. gün`,g:'Seri',
+      m:`+${fmt(lg)} altın${lc?` · +${lc} kristal`:''}`,d:Array.from({length:7},(_,j)=>j<k?'●':'○').join(' ')+(D.claimed?' · yarın tekrar gel':' · 7. gün +5 kristal'),
+      b:D.claimed?'Alındı':'Topla',c:D.claimed?'✓':fmt(lg),cur:'gold',can:!D.claimed,
+      act:()=>{if(D.claimed)return false;D.claimed=true;addGold(lg);if(lc)S.crystals+=lc;toast('Günlük ödül alındı',`+${fmt(lg)} altın${lc?` ve ${lc} kristal`:''}`);return true;}});
+    D.q.forEach((dq,j)=>{
+      const def=QUESTS.find(x=>x.id===dq.id),prog=Math.max(0,Math.min(dq.n,(S.stats[def.stat]||0)-dq.base)),done=prog>=dq.n,cr=dq.lvl+1,gm=[5,10,20][dq.lvl],gv=rewardGold(gm);
+      out.push({key:'q'+j,cls:'tal',ic:{html:svg(done?'star':'cal'),cls:done?'c-gold':'c-cry'},t:def.t(dq.n),g:['Kolay','Orta','Zor'][dq.lvl],m:`${prog} / ${dq.n}`,
+        d:`Ödül: ${cr} kristal + ${gm} dk üretim`,bar:prog/dq.n,b:dq.claimed?'Alındı':'Al',c:dq.claimed?'✓':`+${cr}`,cur:'cry',can:done&&!dq.claimed,
+        act:()=>{if(!done||dq.claimed)return false;dq.claimed=true;S.crystals+=cr;addGold(gv);toast('Görev tamamlandı',`+${cr} kristal ve ${fmt(gv)} altın`,1);return true;}});
+    });
   }else if(tab==='yet'){
     const n=crystalsFor(),ok=S.runMax>=100;
     out.push({key:'pr',cls:'pr',ic:{html:svg('gem'),cls:'c-cry'},t:'Yeni Sefer',g:ok?'Hazır':'Kilitli',m:ok?`Şimdi +${n} kristal`:`${S.runMax} / 100 m`,
@@ -1460,11 +1549,35 @@ const listEl=$('list');
 function itemHTML(it){
   return `<div class="item${it.locked?' locked':''}${it.cls?' '+it.cls:''}" data-i="${it.key}">
     <div class="ic ${it.ic.cls||''}"${it.ic.tint?` style="--tint:${it.ic.tint}"`:''}>${it.ic.html}</div>
-    <div class="tx"><div class="t"><span data-f="t"></span><span class="tag" data-f="g"></span></div><div class="m"><span data-f="m"></span> <em data-f="e"></em></div><div class="d" data-f="d"></div><div class="pb" data-f="p"><i></i></div></div>
+    <div class="tx"><div class="t"><span data-f="t"></span><span class="tag ${it.gcls||''}" data-f="g"></span></div><div class="m"><span data-f="m"></span> <em data-f="e"></em></div><div class="d" data-f="d"></div><div class="pb" data-f="p"><i></i></div></div>
     ${it.nobtn?'<span></span>':`<button class="buy${it.cur==='cry'?' cry':''}" data-k="${it.key}"><span class="bl" data-f="b"></span><span class="bc">${it.cur==='cry'?'<i class="gem sm"></i>':'<i class="coin sm"></i>'}<span data-f="c"></span></span></button>`}
   </div>`;
 }
-const TITLES={ekip:'Kazı Ekibi',gel:'Geliştirme',yet:'Yetenekler',kol:'Koleksiyon'};
+const TITLES={ekip:'Kazı Ekibi',gel:'Geliştirme',yet:'Yetenekler',gor:'Görevler',kol:'Koleksiyon'};
+function dayKey(off){const d=new Date(Date.now()+(off||0)*864e5);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+// new calendar day: advance (or reset) the login streak and roll three quests (easy, medium, hard)
+function rollDay(){
+  const key=dayKey();if(S.daily&&S.daily.day===key)return false;
+  const prev=S.daily,streak=prev&&prev.day===dayKey(-1)?(prev.streak%7)+1:1,seed=strSeed(key);
+  const pick=QUESTS.map((q,i)=>[hash(seed,i,3),q]).sort((a,b)=>a[0]-b[0]).slice(0,3).map(x=>x[1]);
+  S.daily={day:key,streak,claimed:false,q:pick.map((q,lvl)=>({id:q.id,lvl,n:q.n[lvl],base:S.stats[q.stat]||0,claimed:false}))};
+  return true;
+}
+const rewardGold=min=>Math.max(goldRate(true)*60*min,hpAt(S.depth)*goldPerHp(S.depth)*goldMult(true)*min*4,50*min);
+const LOGIN_CRY=[0,0,1,0,2,0,5];
+function updateCol(){
+  const prev={...COL};
+  COL.ekip=WORKERS.every((w,i)=>S.found['w'+i]);COL.bolge=S.stats.bestDepth>=BIOMES[BIOMES.length-1].from;
+  COL.maden=MINERALS.every(m=>S.found[m]);COL.hazine=TREASURES.every(t=>S.hz[t.id]);
+  const msg={ekip:'Kazı Ekibi · ekip hasarı +%15',bolge:'Bölgeler · altın +%15',maden:'Madenler · dokunuş +%25, Kristal Kask',hazine:'Hazineler · sefer kristali +%15, Altın Kask'};
+  for(const k in COL)if(COL[k]&&!prev[k]&&prev.init)toast('Koleksiyon tamamlandı!',msg[k]);
+  COL.init=true;
+}
+function costumePortrait(c){
+  const key='c'+c.id;let u=portraitCache.get(key);if(u)return u;
+  const t=document.createElement('canvas');t.width=t.height=120;const x=t.getContext('2d');x.translate(50,110);drawHuman(x,96,.35,c.look,0,-.5);
+  u=t.toDataURL();portraitCache.set(key,u);return u;
+}
 function renderPanel(){
   const tab=S.tab;
   document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));
@@ -1475,7 +1588,8 @@ function renderPanel(){
   if(tab==='ekip') hh=`Toplam <b>${fmt(teamDps())}/sn</b> hasar`;
   else if(tab==='gel') hh=`Dokunuş <b>${fmt(tapDmg())}</b> · Kritik <b>%${Math.round(critChance()*100)}</b> ×${dec(critMult())}`;
   else if(tab==='yet') hh=`<b style="color:var(--crystal)">${fmt(S.crystals)}</b> kristal · harcanmayan her kristal hasar ve altın +%5`;
-  else hh=`Maden <b>${MINERALS.filter(m=>S.found[m]).length}/${MINERALS.length}</b> · Başarım <b>${achCount()}/${ACH.length}</b> (her biri +%3 altın)`;
+  else if(tab==='gor') hh=`Seri <b>${S.daily.streak}. gün</b> · görevler her gece yenilenir`;
+  else hh=`Ekip <b>${WORKERS.filter((w,i)=>S.found['w'+i]).length}/${WORKERS.length}</b> · Bölge <b>${BIOMES.filter(b=>S.stats.bestDepth>=b.from).length}/${BIOMES.length}</b> · Maden <b>${MINERALS.filter(m=>S.found[m]).length}/${MINERALS.length}</b> · Hazine <b>${TREASURES.filter(t=>S.hz[t.id]).length}/${TREASURES.length}</b>`;
   if(head.innerHTML!==hh)head.innerHTML=hh;
   if(tab==='kol'){
     const h=collectionHTML();if(h!==colHTML||listKey!=='kol'){listEl.innerHTML=h;colHTML=h;listKey='kol';}
@@ -1493,20 +1607,27 @@ function renderPanel(){
       el.classList.toggle('pulse',!!it.pulse);
     }
   }
-  const dots={ekip:buildItems('ekip').some(i=>i.can),gel:buildItems('gel').some(i=>i.can),yet:buildItems('yet').some(i=>i.can),kol:false};
+  const dots={ekip:buildItems('ekip').some(i=>i.can),gel:buildItems('gel').some(i=>i.can),yet:buildItems('yet').some(i=>i.can),gor:buildItems('gor').some(i=>i.can),kol:false};
   document.querySelectorAll('.nav button').forEach(b=>{b.querySelector('.dot').hidden=!dots[b.dataset.tab]||b.dataset.tab===tab;});
 }
 function collectionHTML(){
-  const best=S.stats.bestDepth;
+  const best=S.stats.bestDepth,cE=WORKERS.filter((w,i)=>S.found['w'+i]).length,cB=BIOMES.filter(b=>best>=b.from).length,
+    cM=MINERALS.filter(m=>S.found[m]).length,cH=TREASURES.filter(t=>S.hz[t.id]).length;
+  const rew=(ok,txt)=>`<p class="rew ${ok?'ok':''}">${ok?'✓ Tamamlandı · ':'Tamamlama ödülü: '}${txt}</p>`;
   let h='<div class="col">';
-  h+=`<h3>Kazı Ekibi <span>${WORKERS.filter((w,i)=>S.found['w'+i]).length}/${WORKERS.length}</span></h3><div class="tiles">`;
+  h+=`<h3>Kazı Ekibi <span>${cE}/${WORKERS.length}</span></h3>${rew(COL.ekip,'ekip hasarı +%15')}<div class="tiles">`;
   WORKERS.forEach((w,i)=>{const on=S.found['w'+i];h+=`<div class="tile ${on?'on':'off'}"><img alt="" src="${portrait(i)}">${on?w.name:'???'}</div>`;});
   h+=`</div><p class="note">Sonraki güncellemelerde 14 ekip daha: hayvanlar, makineler ve fantastik ekipler.</p>`;
-  h+=`<h3>Bölgeler <span>${BIOMES.filter(b=>best>=b.from).length}/${BIOMES.length+FUTURE.length}</span></h3><div class="regions">`;
-  BIOMES.forEach(b=>{const on=best>=b.from;h+=`<div class="reg ${on?'':'off'}"><b>${on?b.name:'???'}</b><span>${b.from}–${b.to===Infinity?'…':b.to} m</span></div>`;});
-    h+=`</div><h3>Madenler <span>${MINERALS.filter(m=>S.found[m]).length}/${MINERALS.length}</span></h3><div class="tiles">`;
+  h+=`<h3>Bölgeler <span>${cB}/${BIOMES.length}</span></h3>${rew(COL.bolge,'altın +%15')}<div class="regions">`;
+  BIOMES.forEach(b=>{const on=best>=b.from;h+=`<div class="reg ${on?'':'off'}"><div><b>${on?b.name:'???'}</b><small>${on?b.mech:'Henüz keşfedilmedi'}</small></div><span>${b.from}–${b.to===Infinity?'…':b.to} m</span></div>`;});
+  h+=`</div><h3>Madenler <span>${cM}/${MINERALS.length}</span></h3>${rew(COL.maden,'dokunuş +%25 ve Kristal Kask kostümü')}<div class="tiles">`;
   MINERALS.forEach(m=>{const on=S.found[m];h+=`<div class="tile ${on?'on':'off'}"><img alt="" src="${thumb(m)}">${on?BLOCKS[m].name:'???'}</div>`;});
-  h+=`</div><h3>Başarımlar <span>${achCount()}/${ACH.length}</span></h3><div class="achs">`;
+  h+=`</div><h3>Hazineler <span>${cH}/${TREASURES.length}</span></h3>${rew(COL.hazine,'sefer kristali +%15 ve Altın Kask kostümü')}<div class="tiles">`;
+  TREASURES.forEach((t,i)=>{const on=S.hz[t.id],seen=best>=BIOMES[i].from;h+=`<div class="tile ${on?'on':'off'}" style="color:${on?t.c:'var(--muted)'}">${svg(t.icon)}<span style="color:var(--${on?'text':'muted'})">${on?t.name:'???'}</span><small style="display:block;color:var(--muted)">${seen?BIOMES[i].name:'???'}</small></div>`;});
+  h+=`</div><p class="note">Hazineler bulundukları bölgenin sandıklarından çıkar. Dinozor Kafatası için Fosil Vadisi’nde fosil parçası topla (${Math.min(S.fos||0,10)}/10).</p>`;
+  h+=`<h3>Kostümler <span>${COSTUMES.filter(c=>!c.req||COL[c.req]).length}/${COSTUMES.length}</span></h3><div class="tiles">`;
+  COSTUMES.forEach(c=>{const ok=!c.req||COL[c.req];h+=`<button class="tile btn ${ok?'on':'off'}" data-costume="${c.id}" aria-pressed="${S.costume===c.id}"${ok?'':' disabled'}><img alt="" src="${costumePortrait(c)}">${c.name}${ok?'':`<small style="display:block">${c.req==='maden'?'Madenler':'Hazineler'} koleksiyonu</small>`}</button>`;});
+  h+=`</div><h3>Başarımlar <span>${achCount()}/${ACH.length}</span></h3><p class="rew">Her başarım altını %3 artırır</p><div class="achs">`;
   ACH.forEach(a=>{const on=S.ach[a.id];h+=`<div class="ach ${on?'on':''}"><i>${on?'✓':''}</i><div><b>${a.name}</b><small>${a.desc}</small></div></div>`;});
   h+=`</div><h3>İstatistikler</h3><div class="stats">
     <div>En derin<b>${best.toLocaleString('tr-TR')} m</b></div><div>Kırılan blok<b>${S.stats.blocks.toLocaleString('tr-TR')}</b></div>
@@ -1516,6 +1637,8 @@ function collectionHTML(){
 }
 function checkAch(){
   WORKERS.forEach((w,i)=>{if(S.own[i]>0)S.found['w'+i]=1;});
+  updateCol();
+  if(rollDay())toast('Yeni gün!','Günlük ödülün ve görevlerin hazır.');
   for(const a of ACH){if(!S.ach[a.id]&&a.t()){S.ach[a.id]=1;toast('Başarım: '+a.name,a.desc+' · altın +%3');SFX.ach();}}
 }
 
@@ -1537,13 +1660,14 @@ function openPrestige(){
 }
 function resetWorld(){rowCache.clear();makeFront();sprites=[];parts=[];floats=[];projs=[];flies=[];camY=-frontY();player.col=2;player.x=colX(2);listKey='';}
 function doPrestige(n){
-  const keep={crystals:S.crystals+n,tal:S.tal,ach:S.ach,found:S.found,stats:S.stats,sound:S.sound,buyMult:S.buyMult};
+  const keep={crystals:S.crystals+n,tal:S.tal,ach:S.ach,found:S.found,stats:S.stats,sound:S.sound,buyMult:S.buyMult,hz:S.hz,fos:S.fos,costume:S.costume,numFmt:S.numFmt,daily:S.daily};
   S=Object.assign(fresh(),keep);S.stats.runs++;S.gold=startGold();
   resetWorld();banner(`Sefer ${S.stats.runs+1}`,'Yeniden aşağı!');SFX.region();S.tab='yet';save();
 }
 function openSettings(step){
   openModal(`<h2>Ayarlar</h2>
     <div class="setrow"><span>Ses efektleri</span><button class="ghost" data-act="snd">${S.sound?'Açık':'Kapalı'}</button></div>
+    <div class="setrow"><span>Sayı gösterimi</span><button class="ghost" data-act="num">${S.numFmt==='sci'?'Bilimsel (1,2·10⁹)':'Standart (1,2 Mr)'}</button></div>
     <div class="setrow"><span style="color:var(--muted)">Oyun kendini her 5 saniyede bu tarayıcıya kaydeder.</span></div>
     <!-- TEMP: progress export, remove later -->
     <div class="setrow"><span>İlerleme kodu</span><button class="ghost" data-act="exp">Kopyala</button></div>
@@ -1551,7 +1675,7 @@ function openSettings(step){
     <div class="setrow"><span>${step?'Bütün ilerleme, kristaller ve yetenekler silinir. Emin misin?':'Bütün ilerlemeyi sil'}</span>
       <button class="ghost danger" data-act="${step?'wipe':'reset'}">${step?'Evet, sil':'Sıfırla'}</button></div>
     <div class="acts" style="margin-top:12px"><button class="buy" data-act="close">Tamam</button></div>`,
-    {snd:()=>{S.sound=!S.sound;openSettings(step);},reset:()=>openSettings(true),
+    {snd:()=>{S.sound=!S.sound;openSettings(step);},num:()=>{S.numFmt=S.numFmt==='sci'?'std':'sci';listKey='';colHTML='';openSettings(step);updateHud();},reset:()=>openSettings(true),
      // TEMP: progress export, remove later
      exp:b=>{const o=serial();delete o.row;const code='YA1:'+btoa(unescape(encodeURIComponent(JSON.stringify(o))));
        const box=$('expBox');box.value=code;box.hidden=false;box.focus();box.select();
@@ -1572,6 +1696,8 @@ function grantAway(sec,showModal){
 /* ================= INPUT ================= */
 cv.addEventListener('pointerdown',e=>{e.preventDefault();const r=cv.getBoundingClientRect();tapAt(e.clientX-r.left);});
 listEl.addEventListener('click',e=>{
+  const cb=e.target.closest('button[data-costume]');
+  if(cb){if(!cb.disabled){S.costume=cb.dataset.costume;SFX.ui();colHTML='';renderPanel();}return;}
   const b=e.target.closest('button[data-k]');if(!b||b.disabled)return;
   const it=curItems.get(b.dataset.k);if(!it||!it.act)return;
   if(it.act()){SFX.buy();checkAch();}
@@ -1579,7 +1705,7 @@ listEl.addEventListener('click',e=>{
 });
 document.querySelector('.nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.tab=b.dataset.tab;SFX.ui();listEl.scrollTop=0;renderPanel();});
 $('seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.buyMult=b.dataset.mult==='max'?'max':+b.dataset.mult;SFX.ui();renderPanel();});
-$('boost').addEventListener('click',()=>{const n=now();if(n<S.boostReady)return;S.boostEnd=n+45000;S.boostReady=n+45000+240000;banner('Altın Rüzgarı','45 sn ×2');SFX.region();updateHud();});
+$('boost').addEventListener('click',()=>{const n=now();if(n<S.boostReady)return;S.boostEnd=n+45000;S.boostReady=n+45000+240000;S.stats.boosts++;banner('Altın Rüzgarı','45 sn ×2');SFX.region();updateHud();});
 $('bSet').addEventListener('click',()=>openSettings(false));
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden){save();}
@@ -1601,6 +1727,9 @@ function start(data){
   S=(data&&data.state)?Object.assign(fresh(),data.state):(load()||fresh());
   while(S.own.length<WORKERS.length)S.own.push(0); // saves from before the deep crew existed
   while(S.tiers.length<WORKERS.length)S.tiers.push(0);
+  S.stats=Object.assign({blocks:0,taps:0,crits:0,chests:0,goldAll:0,runs:0,bestDepth:0,meters:0,hires:0,boosts:0},S.stats);
+  if(!S.hz)S.hz={};
+  rollDay();updateCol();
   const away=(now()-S.last)/1000;
   if(!S.row||S.row.r!==S.depth||S.row.cells.length!==COLS)makeFront();
   resize();camY=S.depth*B-frontY();player.x=colX(player.col);
